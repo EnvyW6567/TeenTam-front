@@ -7,7 +7,7 @@
 ```
 >> git clone https://github.com/Cho-SangHyun/TeenTam-front.git
 ```  
-3. `package.json`에 적혀있는 패키지들 설치 (아래 명령어 입력)
+3. `package.json`에 적혀있는 패키지들 설치 (아래 명령어 입력, 클론된 폴더 안에서 해야 함)
 ```
 >> npm install
 ```  
