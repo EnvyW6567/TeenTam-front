@@ -1,8 +1,18 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage/LoginPage';
+import MainPage from './pages/MainPage/MainPage';
+import SignupPage from './pages/SignupPage/SignupPage';
 import './app.css';
 
 function App() {
   return (
-    <h1>hello!</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />}/>
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/signup" element={<SignupPage />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
