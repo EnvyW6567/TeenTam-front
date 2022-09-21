@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 
 const LoginPage = (props) => {
@@ -28,7 +29,7 @@ const LoginPage = (props) => {
                     <p className={`${styles.error_message} ${styles.password_error}`}></p>
                 </div>
                 <button className={styles.login_button}>로그인</button>
-                <p className={styles.go_to_signup}>처음이신가요? <span className={styles.link_signup}>회원가입</span></p>
+                <p className={styles.go_to_signup}>처음이신가요? <Link className={styles.link_signup} to="/signup">회원가입</Link></p>
             </form>
         </div>
     )

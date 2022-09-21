@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 
 const SignupPage = (props) => {
@@ -61,7 +62,7 @@ const SignupPage = (props) => {
                     <p className={`${styles.error_message} ${styles.birth_error}`}></p>
                 </div>
                 <button className={styles.signup_button}>회원가입</button>
-                <p className={styles.go_to_login}>이미 회원이신가요? <span className={styles.link_login}>로그인</span></p>
+                <p className={styles.go_to_login}>이미 회원이신가요? <Link className={styles.link_login} to="/login">로그인</Link></p>
             </form>
         </div>
     )
