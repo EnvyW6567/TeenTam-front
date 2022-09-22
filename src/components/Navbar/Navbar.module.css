@@ -1,0 +1,83 @@
+.navbar{
+    font-family: 'Pretendard';
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.navbar_contents{
+    position: relative;
+    width: 1168px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 188px;
+    height: 32px;
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate3d(0, -50%, 0); 
+}
+
+.navbar_menu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 48px;
+
+    position: absolute;
+    top: 50%;
+    left: 252px;
+    transform: translate3d(0, -50%, 0); 
+
+    color: #111111;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.navbar_button_list{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate3d(0, -50%, 0); 
+
+    width: 216px;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar_button{
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    width: 100px;
+    height: 40px;
+    border: 1px solid #AC0BF8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.go_to_login{
+    background: #AC0BF8;
+    color: #FFFFFF;
+}
+
+.go_to_signup{
+    color: #AC0BF8;
+    background: #FFFFFF;
+}
