@@ -15,6 +15,7 @@ const SignupPage = (props) => {
                         type="email" 
                         name="email"
                     />
+                    <button className={`${styles.check_button} ${styles.email_check}`}>중복 확인</button>
                     <p className={`${styles.error_message} ${styles.email_error}`}></p>
                 </div>
                 <div className={styles.signup_input_box}>
@@ -48,7 +49,19 @@ const SignupPage = (props) => {
                         type="text" 
                         name="username"
                     />
+                    <button className={`${styles.check_button} ${styles.username_check}`}>중복 확인</button>
                     <p className={`${styles.error_message} ${styles.username_error}`}></p>
+                </div>
+                <div className={styles.signup_input_box}>
+                    <label className={styles.label} htmlFor={styles.phone_number}>전화번호</label>
+                    <input 
+                        placeholder="전화번호를 입력해주세요( '-' 제외)"
+                        className={styles.signup_input} 
+                        id={styles.phone_number} 
+                        type="text" 
+                        name="phone_number"
+                    />
+                    <p className={`${styles.error_message} ${styles.phone_number_error}`}></p>
                 </div>
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.birth}>생년월일</label>

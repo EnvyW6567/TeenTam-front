@@ -28,6 +28,7 @@
     width: 520px;
     height: 80px;
     margin-top: 21px;
+    position: relative;
 }
 
 .label{
@@ -43,6 +44,27 @@
     border: 1px solid #DBDBDB;
     border-radius: 8px;
     outline: none;
+}
+
+.check_button{
+    position: absolute;
+    right: 8px;
+    bottom: 14px;
+    border: 0;
+    width: 90px;
+    height: 32px;
+    background: #F6E9FC;
+    border-radius: 4px;
+    color: #9400DA;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .15s ease-out;
+}
+
+.check_button:hover{
+    background: #9400DA;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .error_message{
