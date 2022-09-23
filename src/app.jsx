@@ -4,12 +4,12 @@ import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import './app.css';
 
-function App() {
+function App({authService}) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />}/>
-        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/login" element={<LoginPage authService={authService}/>}/>
         <Route path="/signup" element={<SignupPage />}/>
       </Routes>
     </BrowserRouter>
