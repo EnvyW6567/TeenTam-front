@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.css';
 import logo from '../../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 
 // Nabigation Bar역할의 컴포넌트
 // 로그인 전 후로 다른 모습 보여주도록 추후 작업이 필요
@@ -17,8 +18,8 @@ const Navbar = (props) => {
                     <li cn={styles.navbar_menu_name}>급식타임</li>
                 </ul>
                 <div className={styles.navbar_button_list}>
-                    <button className={`${styles.navbar_button} ${styles.go_to_login}`}>로그인</button>
-                    <button className={`${styles.navbar_button} ${styles.go_to_signup}`}>회원가입</button>
+                    <Link to='/login' className={`${styles.navbar_button} ${styles.go_to_login}`}>로그인</Link>
+                    <Link to='/signup' className={`${styles.navbar_button} ${styles.go_to_signup}`}>회원가입</Link>
                 </div>
             </div>
         </nav>
