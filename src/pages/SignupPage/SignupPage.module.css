@@ -41,6 +41,7 @@
 .signup_input{
     width: 520px;
     height: 52px;
+    padding-left: 16px;
     border: 1px solid #DBDBDB;
     border-radius: 8px;
     outline: none;
