@@ -12,14 +12,14 @@ const MainPageMainSection = (props) => {
         <section className={styles.main_page_main_section}>
             <SearchBar />
             <section className={styles.boards}>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
-                <section className={styles.section}></section>
+                <section className={styles.section}>오늘의 메인 탐탐👀</section>
+                <section className={styles.section}>아이돌🎙</section>
+                <section className={styles.section}>친구👭</section>
+                <section className={styles.section}>학교🏫</section>
+                <section className={styles.section}>썸/연애💗</section>
+                <section className={styles.section}>진로🔎</section>
+                <section className={styles.section}>스타일👖</section>
+                <section className={styles.section}>공지사항✔️</section>
             </section>
         </section>
     )
