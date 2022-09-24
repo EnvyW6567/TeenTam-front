@@ -10,7 +10,7 @@ function App({authService}) {
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="/login" element={<LoginPage authService={authService}/>}/>
-        <Route path="/signup" element={<SignupPage />}/>
+        <Route path="/signup" element={<SignupPage authService={authService}/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 
-const SignupPage = (props) => {
+const SignupPage = ({authService}) => {
     // 중복확인 버튼을 눌렀는지
     const [isChecked, setIsChecked] = useState({
         email: false,
@@ -31,7 +31,7 @@ const SignupPage = (props) => {
         cleanErrorMessage();
         // 인풋 태그들에 입력된 값 가져오기
         const email = emailRef.current.value;
-        const password1 = passwordRef.current.value;
+        const password = passwordRef.current.value;
         const password2 = passwordConfirmRef.current.value;
         const username = usernameRef.current.value;
         const phoneNumber = phoneNumberRef.current.value;
@@ -47,13 +47,13 @@ const SignupPage = (props) => {
         // else if(!isChecked.email){
         //     errorRef.emailErrorRef.current.innerText = "중복확인을 진행해주세요";
         // }
-        else if(!password1){
+        else if(!password){
             errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
         }
         else if(!password2){
             errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
         }
-        else if(password1 !== password2){
+        else if(password !== password2){
             errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
         }
         else if(!username){
@@ -71,9 +71,28 @@ const SignupPage = (props) => {
         else if(birth.length < 8){
             errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
         }
+        else{
+            authService.signup({
+                email,
+                password: password,
+                username,
+                birth: getFormattedBirth(birth),
+                phone_number: phoneNumber
+            });
+        }
         
     }
-
+    // 8자리 문자열 형태로 받은 birth를 하이픈이 있는 형태로 바꿔서 반환
+    // ex) 19901210 -> 1990-12-10
+    const getFormattedBirth = (birth) => {
+        const formatterBirth = (
+            birth.substring(0, 4) + '-' 
+            + birth.substring(4, 6) + '-' 
+            + birth.substring(6, 8)
+        );
+        return formatterBirth;
+    }
+    // 각 인풋 태그들의 에러메시지를 지우는 함수
     const cleanErrorMessage = () => {
         for (const ref in errorRef){
             errorRef[ref].current.innerText = "";
