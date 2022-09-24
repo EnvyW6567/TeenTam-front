@@ -30,10 +30,13 @@ const LoginPage = ({authService}) => {
             errorRef.passwordErrorRef.current.innerText = "비밀번호를 입력해주세요";
         }
         else{
-            authService.login();
+            authService.login({
+                email, 
+                password
+            });
         }
     }
-
+    // 각 인풋 태그들의 에러메시지를 지우는 함수
     const cleanErrorMessage = () => {
         for (const ref in errorRef){
             errorRef[ref].current.innerText = "";
