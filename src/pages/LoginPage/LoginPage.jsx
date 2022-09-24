@@ -14,6 +14,8 @@ const LoginPage = ({authService}) => {
     
     const handleLogin = (e) => {
         e.preventDefault();
+        // 폼에 출력되어져 있는 에러메시지들 지우기
+        cleanErrorMessage();
         // 인풋 태그들에 입력된 값 가져오기
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -29,6 +31,12 @@ const LoginPage = ({authService}) => {
         }
         else{
             authService.login();
+        }
+    }
+
+    const cleanErrorMessage = () => {
+        for (const ref in errorRef){
+            errorRef[ref].current.innerText = "";
         }
     }
 
