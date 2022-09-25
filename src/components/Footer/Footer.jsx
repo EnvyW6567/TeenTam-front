@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Footer.module.css';
 
+// Footer 컴포넌트
+
 const Footer = (props) => {
     return(
         <footer className={styles.footer}>

@@ -70,6 +70,12 @@
     border: 1px solid #AC0BF8;
     border-radius: 4px;
     cursor: pointer;
+
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .go_to_login{

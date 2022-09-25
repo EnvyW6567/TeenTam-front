@@ -1,0 +1,31 @@
+.main_page_main_section{
+    width: 768px;
+    margin-right: 32px;
+    font-family: 'Pretendard';
+}
+
+.boards{
+    margin-top: 56px;
+    margin-bottom: 140px;
+    width: 768px;
+    height: 1594px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 368px);
+    grid-template-rows:  314px repeat(4, 264px);
+    gap: 56px 32px;
+}
+
+.section{
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 8px;
+}
+
+.section:nth-child(1) {
+	grid-column: 1 / 3;
+}
+
+.section:nth-child(8) {
+	grid-column: 1 / 3;
+}

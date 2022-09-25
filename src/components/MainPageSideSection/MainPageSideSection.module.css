@@ -1,0 +1,11 @@
+.main_page_side_section{
+    width: 368px;
+}
+
+.side_menus{
+    width: 368px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+}
