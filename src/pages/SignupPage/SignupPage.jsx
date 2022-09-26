@@ -4,10 +4,7 @@ import styles from './SignupPage.module.css';
 
 const SignupPage = ({authService}) => {
     // 중복확인 버튼을 눌렀는지
-    const [isChecked, setIsChecked] = useState({
-        email: false,
-        username: false
-    });
+    const [isChecked, setIsChecked] = useState(false);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -56,9 +53,10 @@ const SignupPage = ({authService}) => {
         else if(!username){
             errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
         }
-        // else if(!isChecked.username){
-        //     errorRef.usernameErrorRef.current.innerText = "중복확인을 진행해주세요";
-        // }
+        else if(!isChecked){
+            // errorRef.usernameErrorRef.current.innerText = "중복확인을 진행해주세요";
+            return;
+        }
         else if(!phoneNumber){
             errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
         }
@@ -95,14 +93,28 @@ const SignupPage = ({authService}) => {
             errorRef[ref].current.innerText = "";
         }
     }
-    const handleInputFocus = (e) => {
+    const handleFocusInput = (e) => {
         // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
         errorRef[e.target.name + 'ErrorRef'].current.innerText = '';
     }
 
-    const handleClickCheck = (e) => {
-        e.preventDefault();
-        errorRef[e.target.dataset.name + 'ErrorRef'].current.innerText = '';
+    const handleBlurInput = async (e) => {
+        const username = usernameRef.current.value;
+
+        if(username){
+            const checkResult = await authService.checkUsername(username);
+
+            if(checkResult){
+                setIsChecked(true);
+                errorRef.usernameErrorRef.current.classList.add(styles.done_check);
+                errorRef[e.target.name + 'ErrorRef'].current.innerText = "✔ 사용가능한 닉네임입니다";
+            }
+            else{
+                setIsChecked(false);
+                errorRef.usernameErrorRef.current.classList.remove(styles.done_check);
+                errorRef[e.target.name + 'ErrorRef'].current.innerText = "사용할 수 없는 닉네임입니다";
+            }
+        }
     }
 
     const handleInputChange = (e) => {
@@ -116,7 +128,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.email}>이메일</label>
                     <input
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         ref={emailRef} 
                         placeholder='사용하실 이메일 주소를 입력해주세요' 
                         className={styles.signup_input} 
@@ -129,7 +141,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.password}>비밀번호</label>
                     <input
-                        onFocus={handleInputFocus} 
+                        onFocus={handleFocusInput} 
                         ref={passwordRef}
                         placeholder='사용하실 비밀번호를 입력해주세요'
                         className={styles.signup_input} 
@@ -142,7 +154,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.password_confirm}>비밀번호 확인</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         ref={passwordConfirmRef}
                         placeholder='비밀번호를 한 번 더 입력해주세요'
                         className={styles.signup_input} 
@@ -155,7 +167,8 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.username}>닉네임</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
+                        onBlur={handleBlurInput}
                         ref={usernameRef}
                         placeholder='사용하실 닉네임을 입력해주세요'
                         className={styles.signup_input} 
@@ -163,13 +176,12 @@ const SignupPage = ({authService}) => {
                         type="text" 
                         name="username"
                     />
-                    <button className={styles.check_button} data-name="username" onClick={handleClickCheck}>중복 확인</button>
                     <p className={styles.error_message} ref={errorRef.usernameErrorRef}></p>
                 </div>
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.phone_number}>전화번호</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         onChange={handleInputChange}
                         ref={phoneNumberRef}
                         placeholder="전화번호를 입력해주세요( '-' 제외)"
@@ -184,7 +196,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.birth}>생년월일</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         onChange={handleInputChange}
                         ref={birthRef}
                         placeholder='생년월일 8자리를 입력해주세요'

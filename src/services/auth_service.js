@@ -43,6 +43,24 @@ class AuthService {
                 console.log(error);
             })
     }
+
+    async checkUsername(username){
+        const data = {
+            username
+        };
+        
+        let checkResult;
+
+        await axios.post(`${process.env.REACT_APP_BASE_API_URL}/account/username-validate/`, data)
+            .then(response => {
+                checkResult = true;
+            })
+            .catch(error => {
+                checkResult = false;
+            })
+        
+        return checkResult;
+    }
 }
 
 export default AuthService;
