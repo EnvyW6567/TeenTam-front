@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // 로그인 전 후로 다른 모습 보여주도록 추후 작업이 필요
 // 각 메뉴들을 클릭했을 때 해당 페이지로 연결하도록 하는 작업도 필요
 
-const Navbar = (props) => {
+const Navbar = ({user, logout}) => {
     return(
         <nav className={styles.navbar}>
             <div className={styles.navbar_contents}>
@@ -18,8 +18,19 @@ const Navbar = (props) => {
                     <li cn={styles.navbar_menu_name}>급식타임</li>
                 </ul>
                 <div className={styles.navbar_button_list}>
-                    <Link to='/login' className={`${styles.navbar_button} ${styles.go_to_login}`}>로그인</Link>
-                    <Link to='/signup' className={`${styles.navbar_button} ${styles.go_to_signup}`}>회원가입</Link>
+                    {
+                        Object.keys(user).length === 0 ? (
+                            <>
+                                <Link to='/login' className={`${styles.navbar_button} ${styles.go_to_login}`}>로그인</Link>
+                                <Link to='/signup' className={`${styles.navbar_button} ${styles.go_to_signup}`}>회원가입</Link>       
+                            </>
+                        ) : (
+                            <>
+                                <Link to='/login' className={`${styles.navbar_button} ${styles.go_to_mypage}`}>마이페이지</Link>
+                                <button className={`${styles.navbar_button} ${styles.logout_button}`} onClick={logout}>로그아웃</button>
+                            </>
+                        )
+                    }
                 </div>
             </div>
         </nav>

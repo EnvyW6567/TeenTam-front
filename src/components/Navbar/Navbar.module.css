@@ -78,12 +78,12 @@
     align-items: center;
 }
 
-.go_to_login{
+.go_to_login, .go_to_mypage{
     background: #AC0BF8;
     color: #FFFFFF;
 }
 
-.go_to_signup{
+.go_to_signup, .logout_button{
     color: #AC0BF8;
     background: #FFFFFF;
 }
