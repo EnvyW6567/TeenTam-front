@@ -24,8 +24,13 @@ const SignupPage = ({authService}) => {
 
     const handleSignup = (e) => {
         e.preventDefault();
-        // 폼에 출력되어져 있는 에러메시지들 지우기
-        cleanErrorMessage();
+        // 폼에 출력되어져 있는 에러메시지들 지우기(닉네임 제외)
+        cleanErrorMessage("emailErrorRef");
+        cleanErrorMessage("passwordErrorRef");
+        cleanErrorMessage("passwordConfirmErrorRef");
+        cleanErrorMessage("phoneNumberErrorRef");
+        cleanErrorMessage("birthErrorRef");
+
         // 인풋 태그들에 입력된 값 가져오기
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -34,39 +39,8 @@ const SignupPage = ({authService}) => {
         const phoneNumber = phoneNumberRef.current.value;
         const birth = birthRef.current.value;
 
-        // 유효성 검사
-        if(!email){
-            errorRef.emailErrorRef.current.innerText = "사용하실 이메일을 입력해주세요";
-        }
-        else if(!email.includes('@')){
-            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
-        }
-        else if(!password){
-            errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
-        }
-        else if(!password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
-        }
-        else if(password !== password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
-        }
-        else if(!username){
-            errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
-        }
-        else if(!isChecked){
-            // errorRef.usernameErrorRef.current.innerText = "중복확인을 진행해주세요";
-            return;
-        }
-        else if(!phoneNumber){
-            errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
-        }
-        else if(!birth){
-            errorRef.birthErrorRef.current.innerText = "생년월일을 입력해주세요";
-        }
-        else if(birth.length < 8){
-            errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
-        }
-        else{
+        // 유효성 검사 성공 시 회원가입처리
+        if(validation(email, password, password2, username, phoneNumber, birth)){
             authService.signup({
                 email,
                 password: password,
@@ -76,6 +50,49 @@ const SignupPage = ({authService}) => {
             });
         }
         
+    }
+    // 유효성 검사
+    const validation = (email, password, password2, username, phoneNumber, birth) => {
+        if(!email){
+            errorRef.emailErrorRef.current.innerText = "사용하실 이메일을 입력해주세요";
+            return false;
+        }
+        else if(!email.includes('@')){
+            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
+            return false;
+        }
+        else if(!password){
+            errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            return false;
+        }
+        else if(!password2){
+            errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            return false;
+        }
+        else if(password !== password2){
+            errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
+            return false;
+        }
+        else if(!username){
+            errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
+            return false;
+        }
+        else if(!isChecked){
+            return false;
+        }
+        else if(!phoneNumber){
+            errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
+            return false;
+        }
+        else if(!birth){
+            errorRef.birthErrorRef.current.innerText = "생년월일을 입력해주세요";
+            return false;
+        }
+        else if(birth.length < 8){
+            errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
+            return false;
+        }
+        return true;
     }
     // 8자리 문자열 형태로 받은 birth를 하이픈이 있는 형태로 바꿔서 반환
     // ex) 19901210 -> 1990-12-10
@@ -87,17 +104,16 @@ const SignupPage = ({authService}) => {
         );
         return formatterBirth;
     }
-    // 각 인풋 태그들의 에러메시지를 지우는 함수
-    const cleanErrorMessage = () => {
-        for (const ref in errorRef){
-            errorRef[ref].current.innerText = "";
-        }
+    //  인풋태그 에러메시지를 지우는 함수
+    const cleanErrorMessage = (refName) => {
+        errorRef[refName].current.innerText = "";
     }
+    // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
     const handleFocusInput = (e) => {
-        // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
-        errorRef[e.target.name + 'ErrorRef'].current.innerText = '';
+        const refName = e.target.name + 'ErrorRef';
+        cleanErrorMessage(refName);
     }
-
+    // username 작성 끝낼 시 중복검사
     const handleBlurInput = async (e) => {
         const username = usernameRef.current.value;
 
