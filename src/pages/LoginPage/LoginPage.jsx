@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 
 const LoginPage = ({authService}) => {
@@ -11,6 +11,8 @@ const LoginPage = ({authService}) => {
         emailErrorRef: useRef(),
         passwordErrorRef: useRef()
     }
+
+    const navigate = useNavigate();
     
     const handleLogin = (e) => {
         e.preventDefault();
@@ -23,11 +25,17 @@ const LoginPage = ({authService}) => {
         if(validation(email, password)){
             authService.login({
                 email, 
-                password
-            });
+                password,
+            }, goToMainPage);
         }
     }
-
+    // 메인페이지로 이동
+    const goToMainPage = (data) => {
+        navigate("/", {
+            state: data
+        });
+    }
+    // 유효성 검사
     const validation = (email, password) => {
         if(!email){
             errorRef.emailErrorRef.current.innerText = "이메일을 입력해주세요";
