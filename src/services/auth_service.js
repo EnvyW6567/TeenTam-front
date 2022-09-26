@@ -26,8 +26,14 @@ class AuthService {
             })
     }
 
-    logout() {
-        console.log("로그아웃");
+    logout(onLogout) {
+        axios.post(`${process.env.REACT_APP_BASE_API_URL}/account/logout/`)
+            .then(response => {
+                onLogout();
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     signup({ email, password, username, phone_number, birth }){
