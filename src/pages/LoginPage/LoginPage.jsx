@@ -19,22 +19,29 @@ const LoginPage = ({authService}) => {
         // 인풋 태그들에 입력된 값 가져오기
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        // 유효성 검사
-        if(!email){
-            errorRef.emailErrorRef.current.innerText = "이메일을 입력해주세요";
-        }
-        else if(!email.includes('@')){
-            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
-        }
-        else if(!password){
-            errorRef.passwordErrorRef.current.innerText = "비밀번호를 입력해주세요";
-        }
-        else{
+        // 유효성 검사 성공하면 로그인시도
+        if(validation(email, password)){
             authService.login({
                 email, 
                 password
             });
         }
+    }
+
+    const validation = (email, password) => {
+        if(!email){
+            errorRef.emailErrorRef.current.innerText = "이메일을 입력해주세요";
+            return false;
+        }
+        else if(!email.includes('@')){
+            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
+            return false;
+        }
+        else if(!password){
+            errorRef.passwordErrorRef.current.innerText = "비밀번호를 입력해주세요";
+            return false;
+        }
+        return true;
     }
     // 각 인풋 태그들의 에러메시지를 지우는 함수
     const cleanErrorMessage = () => {
@@ -43,8 +50,8 @@ const LoginPage = ({authService}) => {
         }
     }
 
-    const handleInputFocus = (e) => {
-        // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
+    // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
+    const handleFocusInput = (e) => {
         errorRef[e.target.name + 'ErrorRef'].current.innerText = '';
     }
 
@@ -55,7 +62,7 @@ const LoginPage = ({authService}) => {
                 <div className={styles.login_input_box}>
                     <label className={styles.label} htmlFor={styles.email}>이메일</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         placeholder='ex.teentam@gmail.com' 
                         className={styles.login_input} 
                         id={styles.email} 
@@ -68,7 +75,7 @@ const LoginPage = ({authService}) => {
                 <div className={styles.login_input_box}>
                     <label className={styles.label} htmlFor={styles.password}>비밀번호</label>
                     <input
-                        onFocus={handleInputFocus} 
+                        onFocus={handleFocusInput} 
                         placeholder='비밀번호'
                         className={styles.login_input} 
                         id={styles.password} 
