@@ -44,9 +44,6 @@ const SignupPage = ({authService}) => {
         else if(!email.includes('@')){
             errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
         }
-        // else if(!isChecked.email){
-        //     errorRef.emailErrorRef.current.innerText = "중복확인을 진행해주세요";
-        // }
         else if(!password){
             errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
         }
@@ -127,7 +124,6 @@ const SignupPage = ({authService}) => {
                         type="email" 
                         name="email"
                     />
-                    <button className={styles.check_button} data-name="email" onClick={handleClickCheck}>중복 확인</button>
                     <p className={styles.error_message} ref={errorRef.emailErrorRef}></p>
                 </div>
                 <div className={styles.signup_input_box}>
