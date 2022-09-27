@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import MainPageMainSection from '../../components/MainPageMainSection/MainPageMainSection';
@@ -6,20 +6,23 @@ import MainPageSideSection from '../../components/MainPageSideSection/MainPageSi
 import Navbar from '../../components/Navbar/Navbar';
 import styles from './MainPage.module.css';
 
-const MainPage = ({authService}) => {
+const MainPage = ({authService, setUserId}) => {
     const location = useLocation();
 
-    const [user, setUser] = useState(location.state ? location.state : {});
-
     const logout = () => {
-        authService.logout(() => {setUser({})});
+        authService.logout(() => { setUserId(null) });
     }
+
+    useEffect(() => {
+        setUserId(location.state?.userId);
+    }, [setUserId, location]);
+
     return(
         <div className={styles.main_page}>
-            <Navbar user={user} logout={logout} />
+            <Navbar logout={logout} />
             <section className={styles.main}>
                 <MainPageMainSection />
-                <MainPageSideSection user={user}/>
+                <MainPageSideSection />
             </section>
             <Footer />
         </div>
