@@ -5,7 +5,7 @@ import styles from './SignupPage.module.css';
 const SignupPage = ({authService}) => {
     // 중복확인 버튼을 눌렀는지
     const [isChecked, setIsChecked] = useState(false);
-    
+
     const navigate = useNavigate();
 
     const emailRef = useRef();
@@ -56,42 +56,42 @@ const SignupPage = ({authService}) => {
     // 유효성 검사
     const validation = (email, password, password2, username, phoneNumber, birth) => {
         if(!email){
-            errorRef.emailErrorRef.current.innerText = "사용하실 이메일을 입력해주세요";
+            printErrorMessage("email", "사용하실 이메일을 입력해주세요");
             return false;
         }
         else if(!email.includes('@')){
-            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
+            printErrorMessage("email", "이메일 형식에 맞춰 입력해주세요");
             return false;
         }
         else if(!password){
-            errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            printErrorMessage("password", "사용하실 비밀번호를 입력해주세요");
             return false;
         }
         else if(!password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            printErrorMessage("passwordConfirm", "사용하실 비밀번호를 입력해주세요");
             return false;
         }
         else if(password !== password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
+            printErrorMessage("passwordConfirm", "입력한 비밀번호가 동일하지 않습니다");
             return false;
         }
         else if(!username){
-            errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
+            printErrorMessage("username", "사용하실 닉네임을 입력해주세요");
             return false;
         }
         else if(!isChecked){
             return false;
         }
         else if(!phoneNumber){
-            errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
+            printErrorMessage("phoneNumber", "전화번호를 입력해주세요");
             return false;
         }
         else if(!birth){
-            errorRef.birthErrorRef.current.innerText = "생년월일을 입력해주세요";
+            printErrorMessage("birth", "생년월일을 입력해주세요");
             return false;
         }
         else if(birth.length < 8){
-            errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
+            printErrorMessage("birth", "8자리로 입력해주세요");
             return false;
         }
         return true;
@@ -111,6 +111,11 @@ const SignupPage = ({authService}) => {
             + birth.substring(6, 8)
         );
         return formatterBirth;
+    }
+    // 에러메시지 출력
+    const printErrorMessage = (category, message) => {
+        const refName = category + "ErrorRef";
+        errorRef[refName].current.innerText = message;
     }
     //  인풋태그 에러메시지를 지우는 함수
     const cleanErrorMessage = (refName) => {
