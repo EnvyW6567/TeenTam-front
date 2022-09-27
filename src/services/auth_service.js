@@ -19,11 +19,8 @@ class AuthService {
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
 
-                const userData = {
-                    userId: response.data.user.id
-                };
-
-                onLogin(userData);
+                const userId = response.data.user.id
+                onLogin(userId);
             })
             .catch(error => {
                 if(error.response.data.non_field_errors[0] === "wrong password"){
@@ -68,12 +65,9 @@ class AuthService {
                 this.axiosApi.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
-
-                const userData = {
-                    username: response.data.user.username
-                };
-
-                onSignup(userData);
+                
+                const userId = response.data.user.id
+                onSignup(userId);
             })
             .catch(error => {
                 alert("오류 발생!! 다시 시도해주세요")

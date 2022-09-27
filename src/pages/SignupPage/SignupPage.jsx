@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 
-const SignupPage = ({authService}) => {
+const SignupPage = ({ authService, setUserId }) => {
     // 중복확인 버튼을 눌렀는지
     const [isChecked, setIsChecked] = useState(false);
 
@@ -97,10 +97,9 @@ const SignupPage = ({authService}) => {
         return true;
     }
     // 메인페이지로 이동
-    const goToMainPage = (data) => {
-        navigate("/", {
-            state: data
-        });
+    const goToMainPage = (userId) => {
+        setUserId(userId);
+        navigate("/");
     }
     // 8자리 문자열 형태로 받은 birth를 하이픈이 있는 형태로 바꿔서 반환
     // ex) 19901210 -> 1990-12-10

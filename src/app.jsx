@@ -16,8 +16,8 @@ function App({authService}) {
       <UserId.Provider value={uid} >
         <Routes>
           <Route path="/" element={<MainPage authService={authService} setUserId={setUid} />}/>
-          <Route path="/login" element={<LoginPage authService={authService} />}/>
-          <Route path="/signup" element={<SignupPage authService={authService} />}/>
+          <Route path="/login" element={<LoginPage authService={authService} setUserId={setUid} />}/>
+          <Route path="/signup" element={<SignupPage authService={authService} setUserId={setUid} />}/>
         </Routes>
       </UserId.Provider>
     </BrowserRouter>

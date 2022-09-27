@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 
-const LoginPage = ({authService}) => {
+const LoginPage = ({ authService, setUserId }) => {
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -30,10 +30,9 @@ const LoginPage = ({authService}) => {
         }
     }
     // 메인페이지로 이동
-    const goToMainPage = (data) => {
-        navigate("/", {
-            state: data
-        });
+    const goToMainPage = (userId) => {
+        setUserId(userId);
+        navigate("/");
     }
     // 유효성 검사
     const validation = (email, password) => {
