@@ -47,7 +47,7 @@ class AuthService {
             })
     }
 
-    signup({ email, password, username, phone_number, birth }){
+    signup({ email, password, username, phone_number, birth }, onSignup){
         const data = {
             email,
             password,
@@ -63,9 +63,15 @@ class AuthService {
                 this.axiosApi.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
+
+                const userData = {
+                    username: response.data.user.username
+                };
+
+                onSignup(userData);
             })
             .catch(error => {
-                console.log(error);
+                alert("오류 발생!! 다시 시도해주세요");
             })
     }
     // access_token 만료시 refresh_token으로 새 access_token을 발급받는 함수

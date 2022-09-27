@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 
 const SignupPage = ({authService}) => {
     // 중복확인 버튼을 눌렀는지
     const [isChecked, setIsChecked] = useState(false);
+    
+    const navigate = useNavigate();
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -47,7 +49,7 @@ const SignupPage = ({authService}) => {
                 username,
                 birth: getFormattedBirth(birth),
                 phone_number: phoneNumber
-            });
+            }, goToMainPage);
         }
         
     }
@@ -93,6 +95,12 @@ const SignupPage = ({authService}) => {
             return false;
         }
         return true;
+    }
+    // 메인페이지로 이동
+    const goToMainPage = (data) => {
+        navigate("/", {
+            state: data
+        });
     }
     // 8자리 문자열 형태로 받은 birth를 하이픈이 있는 형태로 바꿔서 반환
     // ex) 19901210 -> 1990-12-10
