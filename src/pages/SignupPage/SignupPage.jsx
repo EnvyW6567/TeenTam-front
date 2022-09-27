@@ -4,10 +4,7 @@ import styles from './SignupPage.module.css';
 
 const SignupPage = ({authService}) => {
     // 중복확인 버튼을 눌렀는지
-    const [isChecked, setIsChecked] = useState({
-        email: false,
-        username: false
-    });
+    const [isChecked, setIsChecked] = useState(false);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -27,8 +24,13 @@ const SignupPage = ({authService}) => {
 
     const handleSignup = (e) => {
         e.preventDefault();
-        // 폼에 출력되어져 있는 에러메시지들 지우기
-        cleanErrorMessage();
+        // 폼에 출력되어져 있는 에러메시지들 지우기(닉네임 제외)
+        cleanErrorMessage("emailErrorRef");
+        cleanErrorMessage("passwordErrorRef");
+        cleanErrorMessage("passwordConfirmErrorRef");
+        cleanErrorMessage("phoneNumberErrorRef");
+        cleanErrorMessage("birthErrorRef");
+
         // 인풋 태그들에 입력된 값 가져오기
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -37,41 +39,8 @@ const SignupPage = ({authService}) => {
         const phoneNumber = phoneNumberRef.current.value;
         const birth = birthRef.current.value;
 
-        // 유효성 검사
-        if(!email){
-            errorRef.emailErrorRef.current.innerText = "사용하실 이메일을 입력해주세요";
-        }
-        else if(!email.includes('@')){
-            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
-        }
-        // else if(!isChecked.email){
-        //     errorRef.emailErrorRef.current.innerText = "중복확인을 진행해주세요";
-        // }
-        else if(!password){
-            errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
-        }
-        else if(!password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
-        }
-        else if(password !== password2){
-            errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
-        }
-        else if(!username){
-            errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
-        }
-        // else if(!isChecked.username){
-        //     errorRef.usernameErrorRef.current.innerText = "중복확인을 진행해주세요";
-        // }
-        else if(!phoneNumber){
-            errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
-        }
-        else if(!birth){
-            errorRef.birthErrorRef.current.innerText = "생년월일을 입력해주세요";
-        }
-        else if(birth.length < 8){
-            errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
-        }
-        else{
+        // 유효성 검사 성공 시 회원가입처리
+        if(validation(email, password, password2, username, phoneNumber, birth)){
             authService.signup({
                 email,
                 password: password,
@@ -81,6 +50,49 @@ const SignupPage = ({authService}) => {
             });
         }
         
+    }
+    // 유효성 검사
+    const validation = (email, password, password2, username, phoneNumber, birth) => {
+        if(!email){
+            errorRef.emailErrorRef.current.innerText = "사용하실 이메일을 입력해주세요";
+            return false;
+        }
+        else if(!email.includes('@')){
+            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
+            return false;
+        }
+        else if(!password){
+            errorRef.passwordErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            return false;
+        }
+        else if(!password2){
+            errorRef.passwordConfirmErrorRef.current.innerText = "사용하실 비밀번호를 입력해주세요";
+            return false;
+        }
+        else if(password !== password2){
+            errorRef.passwordConfirmErrorRef.current.innerText = "입력한 비밀번호가 동일하지 않습니다";
+            return false;
+        }
+        else if(!username){
+            errorRef.usernameErrorRef.current.innerText = "사용하실 닉네임을 입력해주세요";
+            return false;
+        }
+        else if(!isChecked){
+            return false;
+        }
+        else if(!phoneNumber){
+            errorRef.phoneNumberErrorRef.current.innerText = "전화번호를 입력해주세요";
+            return false;
+        }
+        else if(!birth){
+            errorRef.birthErrorRef.current.innerText = "생년월일을 입력해주세요";
+            return false;
+        }
+        else if(birth.length < 8){
+            errorRef.birthErrorRef.current.innerText = "8자리로 입력해주세요";
+            return false;
+        }
+        return true;
     }
     // 8자리 문자열 형태로 받은 birth를 하이픈이 있는 형태로 바꿔서 반환
     // ex) 19901210 -> 1990-12-10
@@ -92,20 +104,33 @@ const SignupPage = ({authService}) => {
         );
         return formatterBirth;
     }
-    // 각 인풋 태그들의 에러메시지를 지우는 함수
-    const cleanErrorMessage = () => {
-        for (const ref in errorRef){
-            errorRef[ref].current.innerText = "";
-        }
+    //  인풋태그 에러메시지를 지우는 함수
+    const cleanErrorMessage = (refName) => {
+        errorRef[refName].current.innerText = "";
     }
-    const handleInputFocus = (e) => {
-        // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
-        errorRef[e.target.name + 'ErrorRef'].current.innerText = '';
+    // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
+    const handleFocusInput = (e) => {
+        const refName = e.target.name + 'ErrorRef';
+        cleanErrorMessage(refName);
     }
+    // username 작성 끝낼 시 중복검사
+    const handleBlurInput = async (e) => {
+        const username = usernameRef.current.value;
 
-    const handleClickCheck = (e) => {
-        e.preventDefault();
-        errorRef[e.target.dataset.name + 'ErrorRef'].current.innerText = '';
+        if(username){
+            const checkResult = await authService.checkUsername(username);
+
+            if(checkResult){
+                setIsChecked(true);
+                errorRef.usernameErrorRef.current.classList.add(styles.done_check);
+                errorRef[e.target.name + 'ErrorRef'].current.innerText = "✔ 사용가능한 닉네임입니다";
+            }
+            else{
+                setIsChecked(false);
+                errorRef.usernameErrorRef.current.classList.remove(styles.done_check);
+                errorRef[e.target.name + 'ErrorRef'].current.innerText = "사용할 수 없는 닉네임입니다";
+            }
+        }
     }
 
     const handleInputChange = (e) => {
@@ -119,7 +144,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.email}>이메일</label>
                     <input
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         ref={emailRef} 
                         placeholder='사용하실 이메일 주소를 입력해주세요' 
                         className={styles.signup_input} 
@@ -127,13 +152,12 @@ const SignupPage = ({authService}) => {
                         type="email" 
                         name="email"
                     />
-                    <button className={styles.check_button} data-name="email" onClick={handleClickCheck}>중복 확인</button>
                     <p className={styles.error_message} ref={errorRef.emailErrorRef}></p>
                 </div>
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.password}>비밀번호</label>
                     <input
-                        onFocus={handleInputFocus} 
+                        onFocus={handleFocusInput} 
                         ref={passwordRef}
                         placeholder='사용하실 비밀번호를 입력해주세요'
                         className={styles.signup_input} 
@@ -146,7 +170,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.password_confirm}>비밀번호 확인</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         ref={passwordConfirmRef}
                         placeholder='비밀번호를 한 번 더 입력해주세요'
                         className={styles.signup_input} 
@@ -159,7 +183,8 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.username}>닉네임</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
+                        onBlur={handleBlurInput}
                         ref={usernameRef}
                         placeholder='사용하실 닉네임을 입력해주세요'
                         className={styles.signup_input} 
@@ -167,13 +192,12 @@ const SignupPage = ({authService}) => {
                         type="text" 
                         name="username"
                     />
-                    <button className={styles.check_button} data-name="username" onClick={handleClickCheck}>중복 확인</button>
                     <p className={styles.error_message} ref={errorRef.usernameErrorRef}></p>
                 </div>
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.phone_number}>전화번호</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         onChange={handleInputChange}
                         ref={phoneNumberRef}
                         placeholder="전화번호를 입력해주세요( '-' 제외)"
@@ -188,7 +212,7 @@ const SignupPage = ({authService}) => {
                 <div className={styles.signup_input_box}>
                     <label className={styles.label} htmlFor={styles.birth}>생년월일</label>
                     <input 
-                        onFocus={handleInputFocus}
+                        onFocus={handleFocusInput}
                         onChange={handleInputChange}
                         ref={birthRef}
                         placeholder='생년월일 8자리를 입력해주세요'

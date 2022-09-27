@@ -8,7 +8,7 @@ function App({authService}) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />}/>
+        <Route path="/" element={<MainPage authService={authService}/>}/>
         <Route path="/login" element={<LoginPage authService={authService}/>}/>
         <Route path="/signup" element={<SignupPage authService={authService}/>}/>
       </Routes>

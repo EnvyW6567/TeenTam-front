@@ -47,19 +47,8 @@
     outline: none;
 }
 
-.check_button{
-    position: absolute;
-    right: 8px;
-    bottom: 14px;
-    border: 0;
-    width: 90px;
-    height: 32px;
-    background: #F6E9FC;
-    border-radius: 4px;
-    color: #9400DA;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all .15s ease-out;
+.done_check{
+    color: #34a259 !important;
 }
 
 .check_button:hover{
