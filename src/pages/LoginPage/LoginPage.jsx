@@ -26,7 +26,7 @@ const LoginPage = ({authService}) => {
             authService.login({
                 email, 
                 password,
-            }, goToMainPage);
+            }, goToMainPage, printErrorMessage);
         }
     }
     // 메인페이지로 이동

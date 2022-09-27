@@ -5,7 +5,7 @@ class AuthService {
         this.axiosApi = axiosApi;
     }
 
-    login({ email, password }, onLogin) {
+    login({ email, password }, onLogin, printErrorMessage) {
         const data = {
             email,
             password,
@@ -26,7 +26,12 @@ class AuthService {
                 onLogin(userData);
             })
             .catch(error => {
-                console.log(error);
+                if(error.response.data.non_field_errors[0] === "wrong password"){
+                    printErrorMessage("password", "비밀번호를 다시 확인해주세요");
+                }
+                else{
+                    printErrorMessage("email", "이메일을 다시 확인해주세요");
+                };
             })
     }
 
@@ -71,7 +76,7 @@ class AuthService {
                 onSignup(userData);
             })
             .catch(error => {
-                alert("오류 발생!! 다시 시도해주세요");
+                alert("오류 발생!! 다시 시도해주세요")
             })
     }
     // access_token 만료시 refresh_token으로 새 access_token을 발급받는 함수
