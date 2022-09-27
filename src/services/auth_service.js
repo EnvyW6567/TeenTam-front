@@ -20,7 +20,7 @@ class AuthService {
                 setRefreshToken(refresh_token);
 
                 const userData = {
-                    username: response.data.user.username
+                    userId: response.data.user.id
                 };
 
                 onLogin(userData);
