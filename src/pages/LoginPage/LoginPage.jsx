@@ -38,18 +38,23 @@ const LoginPage = ({authService}) => {
     // 유효성 검사
     const validation = (email, password) => {
         if(!email){
-            errorRef.emailErrorRef.current.innerText = "이메일을 입력해주세요";
+            printErrorMessage("email", "이메일을 입력해주세요");
             return false;
         }
         else if(!email.includes('@')){
-            errorRef.emailErrorRef.current.innerText = "이메일 형식에 맞춰 입력해주세요";
+            printErrorMessage("email", "이메일 형식에 맞춰 입력해주세요");
             return false;
         }
         else if(!password){
-            errorRef.passwordErrorRef.current.innerText = "비밀번호를 입력해주세요";
+            printErrorMessage("password", "비밀번호를 입력해주세요");
             return false;
         }
         return true;
+    }
+    // 에러메시지 출력
+    const printErrorMessage = (category, message) => {
+        const refName = category + "ErrorRef";
+        errorRef[refName].current.innerText = message;
     }
     // 각 인풋 태그들의 에러메시지를 지우는 함수
     const cleanErrorMessage = () => {
