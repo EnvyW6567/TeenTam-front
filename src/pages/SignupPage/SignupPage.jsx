@@ -49,7 +49,7 @@ const SignupPage = ({ authService, setUserId }) => {
                 username,
                 birth: getFormattedBirth(birth),
                 phone_number: phoneNumber
-            }, goToMainPage);
+            }, goToMainPage, printErrorMessage);
         }
         
     }

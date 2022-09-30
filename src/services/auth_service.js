@@ -49,7 +49,7 @@ class AuthService {
             })
     }
 
-    signup({ email, password, username, phone_number, birth }, onSignup){
+    signup({ email, password, username, phone_number, birth }, onSignup, printErrorMessage){
         const data = {
             email,
             password,
@@ -70,7 +70,13 @@ class AuthService {
                 onSignup(userId);
             })
             .catch(error => {
-                alert("오류 발생!! 다시 시도해주세요")
+                const errorData = error.response.data;
+                if(errorData.birth){
+                    printErrorMessage("birth", "생년월일을 정확히 입력해주세요");
+                }
+                else if(errorData.phone_number){
+                    printErrorMessage("phoneNumber", "이 번호를 사용중인 유저가 있습니다");
+                }
             })
     }
     // access_token 만료시 refresh_token으로 새 access_token을 발급받는 함수
