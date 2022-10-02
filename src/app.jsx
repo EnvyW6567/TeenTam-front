@@ -6,6 +6,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import './app.css';
 
 export const User = React.createContext(null);
+export const Logout = React.createContext(null);
 
 function App({authService}) {
   const [user, setUser] = useState({
@@ -14,14 +15,24 @@ function App({authService}) {
     username: null
   });
 
+  const logout = () => {
+    authService.logout(() => { setUser({
+        id: null,
+        email: null,
+        username: null
+    }) });
+}
+
   return (
     <BrowserRouter>
       <User.Provider value={user} >
-        <Routes>
-          <Route path="/" element={<MainPage authService={authService} setUser={setUser} />}/>
-          <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
-          <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
-        </Routes>
+        <Logout.Provider value={logout} >
+          <Routes>
+            <Route path="/" element={<MainPage />}/>
+            <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
+            <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
+          </Routes>
+        </Logout.Provider>
       </User.Provider>
     </BrowserRouter>
   );
