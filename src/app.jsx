@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import './app.css';
+import WritePostPage from './pages/WritePostPage/WritePostPage';
 
 export const User = React.createContext(null);
 export const Logout = React.createContext(null);
@@ -31,6 +32,7 @@ function App({authService}) {
             <Route path="/" element={<MainPage />}/>
             <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
             <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
+            <Route path="/write-post" element={<WritePostPage />}/>
           </Routes>
         </Logout.Provider>
       </User.Provider>
