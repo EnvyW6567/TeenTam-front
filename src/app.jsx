@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import './app.css';
-import { useState } from 'react';
 
-export const UserId = React.createContext(null);
+export const User = React.createContext(null);
 
 function App({authService}) {
-  const [uid, setUid] = useState(null);
+  const [user, setUser] = useState({
+    id: null,
+    email: null,
+    username: null
+  });
 
   return (
     <BrowserRouter>
-      <UserId.Provider value={uid} >
+      <User.Provider value={user} >
         <Routes>
-          <Route path="/" element={<MainPage authService={authService} setUserId={setUid} />}/>
-          <Route path="/login" element={<LoginPage authService={authService} setUserId={setUid} />}/>
-          <Route path="/signup" element={<SignupPage authService={authService} setUserId={setUid} />}/>
+          <Route path="/" element={<MainPage authService={authService} setUser={setUser} />}/>
+          <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
+          <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
         </Routes>
-      </UserId.Provider>
+      </User.Provider>
     </BrowserRouter>
   );
 }

@@ -19,8 +19,8 @@ class AuthService {
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
 
-                const userId = response.data.user.id
-                onLogin(userId);
+                const userData = response.data.user
+                onLogin(userData);
             })
             .catch(error => {
                 if(error.response.data.non_field_errors[0] === "wrong password"){
@@ -66,8 +66,8 @@ class AuthService {
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
                 
-                const userId = response.data.user.id
-                onSignup(userId);
+                const userData = response.data.user
+                onSignup(userData);
             })
             .catch(error => {
                 const errorData = error.response.data;

@@ -5,9 +5,13 @@ import MainPageSideSection from '../../components/MainPageSideSection/MainPageSi
 import Navbar from '../../components/Navbar/Navbar';
 import styles from './MainPage.module.css';
 
-const MainPage = ({authService, setUserId}) => {
+const MainPage = ({authService, setUser}) => {
     const logout = () => {
-        authService.logout(() => { setUserId(null) });
+        authService.logout(() => { setUser({
+            id: null,
+            email: null,
+            username: null
+        }) });
     }
 
     return(
