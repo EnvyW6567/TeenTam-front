@@ -3,8 +3,10 @@ import Navbar from '../../components/Navbar/Navbar';
 import WritePostBar from '../../components/WritePostBar/WritePostBar';
 import styles from './WritePostPage.module.css';
 import { Logout, User } from '../../app';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const WritePostPage = (props) => {
+const WritePostPage = ({ crudService }) => {
     const user = useContext(User);
     const logout = useContext(Logout);
 
@@ -12,6 +14,14 @@ const WritePostPage = (props) => {
 
     const titleRef = useRef();
     const contentRef = useRef();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!user.id){
+            navigate("/");
+        }
+    }, [user, navigate]);
 
     // 자동으로 textArea 높이 조정
     const handleChangeContent = () => {
@@ -30,10 +40,12 @@ const WritePostPage = (props) => {
         const content = contentRef.current.value;
         
         if(validation(title, content)){
-            console.log(user.id);
-            console.log(category);
-            console.log(title);
-            console.log(content);
+            crudService.createPost(
+                category,
+                user.id,
+                title,
+                content
+            );
         }
     }
     // 유효성검사

@@ -9,7 +9,7 @@ import WritePostPage from './pages/WritePostPage/WritePostPage';
 export const User = React.createContext(null);
 export const Logout = React.createContext(null);
 
-function App({authService}) {
+function App({authService, crudService}) {
   const [user, setUser] = useState({
     id: null,
     email: null,
@@ -32,7 +32,7 @@ function App({authService}) {
             <Route path="/" element={<MainPage />}/>
             <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
             <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
-            <Route path="/write-post" element={<WritePostPage />}/>
+            <Route path="/write-post" element={<WritePostPage crudService={crudService} />}/>
           </Routes>
         </Logout.Provider>
       </User.Provider>
