@@ -2,13 +2,12 @@ import React, { useContext, useRef, useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import WritePostBar from '../../components/WritePostBar/WritePostBar';
 import styles from './WritePostPage.module.css';
-import { Logout, User } from '../../app';
+import { User } from '../../app';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const WritePostPage = ({ crudService }) => {
     const user = useContext(User);
-    const logout = useContext(Logout);
 
     const [category, setCategory] = useState("");
 
@@ -67,7 +66,7 @@ const WritePostPage = ({ crudService }) => {
 
     return(
         <div className={styles.write_post_page}>
-            <Navbar logout={logout} />
+            <Navbar />
             <form className={styles.write_post_form}>
                 <div className={styles.write_post_input_box}>
                     <select className={styles.category_input} onChange={handleChangeCaterogy} value={category}>
