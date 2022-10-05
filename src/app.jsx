@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
-import './app.css';
 import WritePostPage from './pages/WritePostPage/WritePostPage';
+import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
+import './app.css';
 
 export const User = React.createContext(null);
 export const Logout = React.createContext(null);
@@ -33,6 +34,7 @@ function App({authService, crudService}) {
             <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
             <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
             <Route path="/write-post" element={<WritePostPage crudService={crudService} />}/>
+            <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage crudService={crudService} />}/>
           </Routes>
         </Logout.Provider>
       </User.Provider>
