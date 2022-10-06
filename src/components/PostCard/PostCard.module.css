@@ -1,0 +1,129 @@
+.post_card{
+    text-decoration: none;
+    color: #666666;
+
+    display: table-row;
+    width: 100%;
+    height: 176px;
+    border-top: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+
+    padding: 0 20px;
+}
+
+.related_categories{
+    width: 728px;
+    height: 24px;
+    margin: 16px auto 8px;
+}
+
+.category_box{
+    width: 62px;
+    height: 24px;
+
+    background: #F6E9FC;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #9400DA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_title{
+    width: 728px;
+    margin: 0 auto 8px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #333333;
+}
+
+.post_content{
+    width: 728px;
+    height: 40px;
+    margin: 0 auto;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.post_info{
+    width: 728px;
+    height: 20px;
+    margin: 20px auto 0;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.writer_info{
+    display: flex;
+    align-items: center;
+}
+
+.post_writer_icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #F8F8F8;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+}
+
+.post_writer{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+    margin-left: 4px;
+}
+
+.post_pub_date{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #2694FB;
+    margin-left: 18px;
+}
+
+.count_info{
+    position: absolute;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+}
+
+.like_info, .view_info{
+    display: flex;
+    justify-content: center;
+}
+
+.view_info{
+    margin-right: 16px;
+}
+
+.like_icon, .view_icon{
+    font-size: 14px;
+    margin-right: 4px;
+}

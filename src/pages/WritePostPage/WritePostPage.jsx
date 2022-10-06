@@ -1,13 +1,13 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import WritePostBar from '../../components/WritePostBar/WritePostBar';
-import styles from './WritePostPage.module.css';
-import { User } from '../../app';
-import { useEffect } from 'react';
+import { User, CRUD } from '../../app';
 import { useNavigate } from 'react-router-dom';
+import styles from './WritePostPage.module.css';
 
-const WritePostPage = ({ crudService }) => {
+const WritePostPage = (props) => {
     const user = useContext(User);
+    const crudService = useContext(CRUD);
 
     const [category, setCategory] = useState("");
 

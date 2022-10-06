@@ -45,6 +45,15 @@
     line-height: 26px;
 }
 
+.navbar_menu_name{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #000000;
+}
+
 .navbar_button_list{
     position: absolute;
     right: 0;

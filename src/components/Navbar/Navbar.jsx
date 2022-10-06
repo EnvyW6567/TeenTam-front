@@ -17,9 +17,9 @@ const Navbar = (props) => {
             <div className={styles.navbar_contents}>
                 <img className={styles.logo} src={logo} alt="TeenTam" />
                 <ul className={styles.navbar_menu}>
-                    <li cn={styles.navbar_menu_name}>커뮤니티</li>
-                    <li cn={styles.navbar_menu_name}>시간표</li>
-                    <li cn={styles.navbar_menu_name}>급식타임</li>
+                    <Link to="/boards" className={styles.navbar_menu_name}>커뮤니티</Link>
+                    <Link to="/boards" className={styles.navbar_menu_name}>시간표</Link>
+                    <Link to="/boards" className={styles.navbar_menu_name}>급식타임</Link>
                 </ul>
                 <div className={styles.navbar_button_list}>
                     {

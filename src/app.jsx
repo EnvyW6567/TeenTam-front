@@ -5,10 +5,12 @@ import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import WritePostPage from './pages/WritePostPage/WritePostPage';
 import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
+import BoardsPage from './pages/BoardsPage/BoardsPage';
 import './app.css';
 
 export const User = React.createContext(null);
 export const Logout = React.createContext(null);
+export const CRUD = React.createContext(null);
 
 function App({authService, crudService}) {
   const [user, setUser] = useState({
@@ -28,15 +30,18 @@ function App({authService, crudService}) {
   return (
     <BrowserRouter>
       <User.Provider value={user} >
-        <Logout.Provider value={logout} >
-          <Routes>
-            <Route path="/" element={<MainPage />}/>
-            <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
-            <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
-            <Route path="/write-post" element={<WritePostPage crudService={crudService} />}/>
-            <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage crudService={crudService} />}/>
-          </Routes>
-        </Logout.Provider>
+        <CRUD.Provider value={crudService} >
+          <Logout.Provider value={logout} >
+            <Routes>
+              <Route path="/" element={<MainPage />}/>
+              <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
+              <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
+              <Route path="/write-post" element={<WritePostPage />}/>
+              <Route path="/boards" element={<BoardsPage />}/>
+              <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage crudService={crudService} />}/>
+            </Routes>
+          </Logout.Provider>
+        </CRUD.Provider>
       </User.Provider>
     </BrowserRouter>
   );
