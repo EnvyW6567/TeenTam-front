@@ -1,22 +1,21 @@
 import React from 'react';
+import Boards from '../../components/Boards/Boards';
 import Footer from '../../components/Footer/Footer';
-import MainPageMainSection from '../../components/MainPageMainSection/MainPageMainSection';
 import MainPageSideSection from '../../components/MainPageSideSection/MainPageSideSection';
 import Navbar from '../../components/Navbar/Navbar';
-import styles from './MainPage.module.css';
+import styles from './BoardsPage.module.css';
 
-
-const MainPage = () => {
+const BoardsPage = (props) => {
     return(
-        <div className={styles.main_page}>
+        <section className={styles.boards_page}>
             <Navbar />
-            <section className={styles.main}>
-                <MainPageMainSection />
+            <section className={styles.boards_main}>
+                <Boards />
                 <MainPageSideSection />
             </section>
             <Footer />
-        </div>
-    )
+        </section>
+    );
 }
 
-export default MainPage;
+export default BoardsPage;

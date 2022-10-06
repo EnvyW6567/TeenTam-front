@@ -1,0 +1,25 @@
+.comments_list_section{
+    margin: 0 auto;
+    width: 970px;
+    height: auto;
+    font-family: 'Pretendard';
+    flex: 1;
+}
+
+.comments_info{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.comments_list{
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+
+    margin-bottom: 60px;
+}

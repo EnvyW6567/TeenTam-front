@@ -1,0 +1,8 @@
+.post_detail_page{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}

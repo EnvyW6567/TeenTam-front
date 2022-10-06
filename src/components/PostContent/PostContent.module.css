@@ -1,0 +1,104 @@
+.post_content_section{
+    width: 970px;
+    margin: 64px auto 0;
+
+    font-family: 'Pretendard';
+}
+
+.post_title{
+    width: 100%;
+    margin: 0 0 20px 0;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+}
+
+.post_info{
+    width: 100%;
+    height: 20px;
+    position: relative;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+
+    display: flex;
+    align-items: center;
+}
+
+.post_writer_icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    background: #F8F8F8;
+    border: 1px solid #DBDBDB;
+
+    margin-right: 4px;
+}
+
+.post_pub_date{
+    color: #2694FB;
+    margin-left: 18px;
+}
+
+.like_info{
+    position: absolute;
+    right: 45px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+
+    display: flex;
+    align-items: center;
+}
+
+.comment_info{
+    position: absolute;
+    right: 0;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+
+    display: flex;
+    align-items: center;
+}
+
+.comment_icon, .like_icon{
+    font-size: 16px;
+}
+
+.comment_count, .like_count{
+    margin-left: 4px;
+}
+
+.empty_box{
+    width: 100%;
+    height: 51px;
+    border-top: 3px solid #111111;
+    margin-top: 16px;
+}
+
+.post_content{
+    margin: 0;
+    width: 100%;
+    white-space: pre-wrap;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #666666;
+}
