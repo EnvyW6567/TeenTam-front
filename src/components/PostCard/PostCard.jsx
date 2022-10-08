@@ -24,7 +24,7 @@ const PostCard = ({ category, post }) => {
                 <div className={styles.category_box}>{CATEGORY_NAME[category]}</div>
             </div>
             <h2 className={styles.post_title}>{post.title}</h2>
-            <p className={styles.post_content}>{post.content.substr(0, 200)}</p>
+            <p className={styles.post_content}>{post.content}</p>
             <div className={styles.post_info}>
                 <span className={styles.writer_info}>
                     <span className={styles.post_writer_icon}></span>
