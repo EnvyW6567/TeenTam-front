@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { BiCommentDots, BiLike } from "react-icons/bi";
+import { CRUD } from '../../app';
 import { getElapsedTime } from '../../services/times';
 import styles from './PostContent.module.css';
 
-const PostContent = ({post}) => {
+const PostContent = ({post, setPost}) => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+    const crudService = useContext(CRUD);
+
+    const handleClickLike = () => {
+        crudService.updatePostLike(user.id, post.boards_id, setPost);
+    }
+
     return(
         <section className={styles.post_content_section}>
             <h1 className={styles.post_title}>{post?.title}</h1>
@@ -22,6 +30,9 @@ const PostContent = ({post}) => {
             </div>
             <div className={styles.empty_box}></div>
             <pre className={styles.post_content}>{post?.content}</pre>
+            <button className={styles.like_button} onClick={handleClickLike} >
+                <BiLike className={styles.like_icon} /> &nbsp;공감
+            </button>
         </section>
     )
 }

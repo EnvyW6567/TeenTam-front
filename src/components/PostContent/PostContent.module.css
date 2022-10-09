@@ -3,6 +3,7 @@
     margin: 64px auto 0;
 
     font-family: 'Pretendard';
+    position: relative;
 }
 
 .post_title{
@@ -93,6 +94,7 @@
 
 .post_content{
     margin: 0;
+    padding-bottom: 12px;
     width: 100%;
     white-space: pre-wrap;
     font-family: 'Pretendard';
@@ -101,4 +103,33 @@
     font-size: 16px;
     line-height: 24px;
     color: #666666;
+}
+
+.like_button{
+    position: absolute;
+    right: 0;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+
+    width: 80px;
+    height: 30px;
+    border: 1px solid #AC0BF8;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #AC0BF8;
+    background: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .1s ease-out;
+}
+
+.like_button:hover{
+    transform: scale(1.01);
 }
