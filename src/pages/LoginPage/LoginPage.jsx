@@ -1,8 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AUTH } from '../../app';
 import styles from './LoginPage.module.css';
 
-const LoginPage = ({ authService, setUser }) => {
+const LoginPage = (props) => {
+    const authService = useContext(AUTH);
+
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -25,13 +28,12 @@ const LoginPage = ({ authService, setUser }) => {
             authService.login({
                 email, 
                 password,
-            }, goToMainPage, printErrorMessage);
+            }, goToPrevPage, printErrorMessage);
         }
     }
-    // 메인페이지로 이동
-    const goToMainPage = (userData) => {
-        setUser(userData);
-        navigate("/");
+    // 이전페이지로 이동
+    const goToPrevPage = () => {
+        navigate(-1);
     }
     // 유효성 검사
     const validation = (email, password) => {

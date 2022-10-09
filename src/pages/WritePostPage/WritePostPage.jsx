@@ -1,13 +1,15 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import WritePostBar from '../../components/WritePostBar/WritePostBar';
-import { User, CRUD } from '../../app';
+import { AUTH, CRUD } from '../../app';
 import { useNavigate } from 'react-router-dom';
 import styles from './WritePostPage.module.css';
 
 const WritePostPage = (props) => {
-    const user = useContext(User);
     const crudService = useContext(CRUD);
+    const authService = useContext(AUTH);
+
+    const [user, setUser] = useState(null);
 
     const [category, setCategory] = useState("");
 
@@ -17,10 +19,25 @@ const WritePostPage = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(!user.id){
-            navigate("/");
+        async function keepLogin(){
+            const userData = localStorage.getItem("user");
+            if(!userData){
+                alert("로그인이 필요한 페이지입니다");
+                navigate("/login");
+            }
+            else{
+                const res = await authService.refreshAccessToken();
+                if(res){
+                    setUser(JSON.parse(userData));
+                }
+                else{
+                    alert("로그인이 만료됐습니다. 다시 로그인해주세요");
+                    navigate("/login");
+                }
+            }
         }
-    }, [user, navigate]);
+        keepLogin();
+    }, [navigate, setUser, authService]);
 
     // 자동으로 textArea 높이 조정
     const handleChangeContent = () => {
