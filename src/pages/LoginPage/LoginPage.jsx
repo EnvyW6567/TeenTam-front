@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AUTH } from '../../app';
 import styles from './LoginPage.module.css';
@@ -62,11 +62,18 @@ const LoginPage = (props) => {
             errorRef[ref].current.innerText = "";
         }
     }
-
     // 인풋태그 클릭하면 해당 인풋과 관련된 오류메시지를 지움
     const handleFocusInput = (e) => {
         errorRef[e.target.name + 'ErrorRef'].current.innerText = '';
     }
+
+    // 이미 로그인 정보 있으면 메인페이지로 이동
+    useEffect(() => {
+        const userData = localStorage.getItem("user");
+        if(userData){
+            navigate("/");
+        }
+    }, [navigate])
 
     return(
         <div className={styles.login_page}>
