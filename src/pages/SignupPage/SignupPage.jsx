@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AUTH } from '../../app';
 import styles from './SignupPage.module.css';
@@ -149,6 +149,14 @@ const SignupPage = (props) => {
     const handleInputChange = (e) => {
         e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
     }
+
+    // 이미 로그인 정보 있으면 메인페이지로 이동
+    useEffect(() => {
+        const userData = localStorage.getItem("user");
+        if(userData){
+            navigate("/");
+        }
+    }, [navigate])
 
     return(
         <div className={styles.signup_page}>
