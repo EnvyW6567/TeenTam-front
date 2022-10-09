@@ -38,7 +38,7 @@ class CRUDService {
                 console.log(error);
             })
     }
-
+    // 게시글 목록 불러오기
     getPostList(boardsCategory, order, setPostList, setPostCount){
         this.axiosApi.get(`/boards/${boardsCategory}?page=1&offset=5&order=${order}`)
             .then(response => {
@@ -49,7 +49,7 @@ class CRUDService {
                 console.log(error);
             })
     }
-
+    // 게시글 좋아요
     updatePostLike(userId, boardsId, onLike){
         const res = window.confirm("이 글을 공감하시겠습니까?");
         if(res){
@@ -77,6 +77,22 @@ class CRUDService {
                     console.log(error);
                 })
         }
+    }
+    // 댓글 생성
+    createComment(userId, boardsId, content){
+        const data = {
+            comments_writer: userId,
+            comments_board: boardsId,
+            content
+        };
+
+        this.axiosApi.post("/boards/create-comment/", data)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 }
 

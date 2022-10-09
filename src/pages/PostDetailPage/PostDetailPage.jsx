@@ -47,7 +47,7 @@ const PostDetailPage = (props) => {
         <div className={styles.post_detail_page}>
             <Navbar />
             <PostContent post={post} setPost={setPost} />
-            <CommentCreateForm />
+            <CommentCreateForm boardsId={boardsId} />
             <CommentsList commentsList={commentsList}/>
             <Footer />
         </div>
