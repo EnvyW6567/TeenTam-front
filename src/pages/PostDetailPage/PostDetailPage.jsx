@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AUTH, CRUD } from '../../app';
 import CommentCreateForm from '../../components/CommentCreateForm/CommentCreateForm';
 import CommentsList from '../../components/CommentsList/CommentsList';
 import Footer from '../../components/Footer/Footer';
@@ -7,7 +8,12 @@ import Navbar from '../../components/Navbar/Navbar';
 import PostContent from '../../components/PostContent/PostContent';
 import styles from './PostDetailPage.module.css';
 
-const PostDetailPage = ({crudService}) => {
+const PostDetailPage = (props) => {
+    const crudService = useContext(CRUD);
+    const authService = useContext(AUTH);
+
+    const navigate = useNavigate();
+
     const params = useParams();
     
     const boardsCategory = params.boards_category;
@@ -17,8 +23,25 @@ const PostDetailPage = ({crudService}) => {
     const [commentsList, setCommentsList] = useState([]);
 
     useEffect(() => {
-        crudService.getPost(boardsCategory, boardsId, setPost, setCommentsList);
-    }, [crudService, boardsCategory, boardsId, setPost, setCommentsList])
+        async function keepLogin(){
+            const userData = localStorage.getItem("user");
+            if(!userData){
+                alert("로그인이 필요한 페이지입니다");
+                navigate("/login");
+            }
+            else{
+                const res = await authService.refreshAccessToken();
+                if(res){
+                    crudService.getPost(boardsCategory, boardsId, setPost, setCommentsList);
+                }
+                else{
+                    alert("로그인이 만료됐습니다. 다시 로그인해주세요");
+                    navigate("/login");
+                }
+            }
+        }
+        keepLogin();
+    }, [authService, navigate, crudService, boardsCategory, boardsId, setPost, setCommentsList])
 
     return(
         <div className={styles.post_detail_page}>

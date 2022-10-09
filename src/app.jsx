@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
@@ -8,41 +8,25 @@ import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import './app.css';
 
-export const User = React.createContext(null);
-export const Logout = React.createContext(null);
 export const CRUD = React.createContext(null);
+export const AUTH = React.createContext(null);
 
 function App({authService, crudService}) {
-  const [user, setUser] = useState({
-    id: null,
-    email: null,
-    username: null
-  });
-
-  const logout = () => {
-    authService.logout(() => { setUser({
-        id: null,
-        email: null,
-        username: null
-    }) });
-}
 
   return (
     <BrowserRouter>
-      <User.Provider value={user} >
+      <AUTH.Provider value={authService}>
         <CRUD.Provider value={crudService} >
-          <Logout.Provider value={logout} >
-            <Routes>
-              <Route path="/" element={<MainPage />}/>
-              <Route path="/login" element={<LoginPage authService={authService} setUser={setUser} />}/>
-              <Route path="/signup" element={<SignupPage authService={authService} setUser={setUser} />}/>
-              <Route path="/write-post" element={<WritePostPage />}/>
-              <Route path="/boards" element={<BoardsPage />}/>
-              <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage crudService={crudService} />}/>
-            </Routes>
-          </Logout.Provider>
+          <Routes>
+            <Route path="/" element={<MainPage />}/>
+            <Route path="/login" element={<LoginPage authService={authService} />}/>
+            <Route path="/signup" element={<SignupPage authService={authService} />}/>
+            <Route path="/write-post" element={<WritePostPage />}/>
+            <Route path="/boards" element={<BoardsPage />}/>
+            <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage />}/>
+          </Routes>
         </CRUD.Provider>
-      </User.Provider>
+      </AUTH.Provider>
     </BrowserRouter>
   );
 }

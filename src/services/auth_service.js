@@ -19,8 +19,10 @@ class AuthService {
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
 
-                const userData = response.data.user
-                onLogin(userData);
+                const userData = response.data.user;
+                // localStorage에도 유저 정보 추가
+                localStorage.setItem("user", JSON.stringify(userData));
+                onLogin();
             })
             .catch(error => {
                 if(error.response.data.non_field_errors[0] === "wrong password"){
@@ -33,20 +35,24 @@ class AuthService {
     }
 
     logout(onLogout) {
-        const refresh_token = getRefreshToken();
-
-        const data = {
-            refresh_token
-        };
-
-        this.axiosApi.post("/account/logout/", data)
-        .then(response => {
-                removeRefreshToken();
-                onLogout();
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        const res = window.confirm("정말로 로그아웃하시겠습니까?");
+        if(res){
+            const refresh_token = getRefreshToken();
+            const data = {
+                refresh_token
+            };
+    
+            this.axiosApi.post("/account/logout/", data)
+            .then(response => {
+                    removeRefreshToken();
+                    // localStorage 정보 삭제
+                    localStorage.clear();
+                    onLogout();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
 
     signup({ email, password, username, phone_number, birth }, onSignup, printErrorMessage){
@@ -66,8 +72,10 @@ class AuthService {
                 // Refresh Token 저장
                 setRefreshToken(refresh_token);
                 
-                const userData = response.data.user
-                onSignup(userData);
+                const userData = response.data.user;
+                // localStorage에도 유저 정보 추가
+                localStorage.setItem("user", JSON.stringify(userData));
+                onSignup();
             })
             .catch(error => {
                 const errorData = error.response.data;
@@ -79,10 +87,28 @@ class AuthService {
                 }
             })
     }
-    // access_token 만료시 refresh_token으로 새 access_token을 발급받는 함수
-    getAccessToken(){
+
+    // refresh_token으로 새 access_token을 발급받는 함수
+    async refreshAccessToken(){
         const refresh_token = getRefreshToken();
-        // 더 구현을 해야 함
+        const data = {
+            refresh: refresh_token
+        };
+
+        if(!refresh_token){
+            console.log("Not exists RT");
+            return false;
+        }
+
+        try{
+            const response = await this.axiosApi.post("/api/token/refresh/", data);
+            const access_token = response.data.access;
+            this.axiosApi.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+            return true;
+        }catch(error){
+            console.log(error);
+            return false;
+        }
     }
 
     async checkUsername(username){
