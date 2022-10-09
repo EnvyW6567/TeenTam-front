@@ -1,8 +1,153 @@
 .main_page_profile{
+    position: relative;
     width: 368px;
-    height: 208px;
     border: 1px solid #DBDBDB;
     border-radius: 8px;
 
     font-family: 'Pretendard';
+}
+
+.has_user{
+    height: 377px;
+}
+
+.has_no_user{
+    height: 208px;
+}
+
+.profile{
+    width: 304px;
+    height: 64px;
+
+    position: absolute;
+    top: 32px;
+    left: 32px;
+
+    display: flex;
+    align-items: center;
+}
+
+.profile_image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+
+    width: 64px;
+    height: 64px;
+    background: #F8F8F8;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+
+    margin-right: 16px;
+}
+
+.intro_message{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+}
+
+.user_info{
+    width: 304px;
+    height: 157px;
+    
+    position: absolute;
+    left: 32px;
+    top: 116px;
+}
+
+.school_info{
+    width: 100%;
+    height: 77px;
+    border-bottom: 1px solid #DBDBDB;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+}
+
+.school_name_info, .grade_info{
+    width: 100%;
+    height: 24px;
+    margin: 0;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.school_name, .grade{
+    position: absolute;
+    left: 90px;
+}
+
+.activity_info{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.level_info, .post_info, .comment_info{
+    flex: 1;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #888888;
+}
+
+.value{
+    display: block;
+    text-align: center;
+    font-style: normal;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+
+    margin-top: 8px;
+}
+
+
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+
+    background: #AC0BF8;
+    border-radius: 8px;
+
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+
+    transition: all .2s ease-out;
+}
+
+.button:hover{
+    transform: translateY(0.2rem);
+}
+
+.login_button{
+    width: 304px;
+    height: 60px;
+}
+
+.profile_edit_button{
+    width: 304px;
+    height: 40px;
 }
