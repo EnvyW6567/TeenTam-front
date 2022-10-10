@@ -122,16 +122,16 @@
     color: #888888;
 }
 
-.like_info, .view_info{
+.like_info, .view_info, .comment_info{
     display: flex;
     justify-content: center;
 }
 
-.view_info{
+.view_info, .like_info{
     margin-right: 16px;
 }
 
-.like_icon, .view_icon{
+.like_icon, .view_icon, .comment_icon{
     font-size: 14px;
     margin-right: 4px;
 }

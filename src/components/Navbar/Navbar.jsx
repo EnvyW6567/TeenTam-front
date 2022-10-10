@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import logo from '../../assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AUTH } from '../../app';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 // Nabigation Bar역할의 컴포넌트
@@ -12,6 +13,8 @@ import { AUTH } from '../../app';
 const Navbar = (props) => {
     const [user, setUser] = useState(null);
     const authService = useContext(AUTH);
+
+    const location = useLocation();
 
     const logout = () => {
         authService.logout(() => {
@@ -30,12 +33,15 @@ const Navbar = (props) => {
     return(
         <nav className={styles.navbar}>
             <div className={styles.navbar_contents}>
-                <img className={styles.logo} src={logo} alt="TeenTam" />
+                <Link to="/"><img className={styles.logo} src={logo} alt="TeenTam" /></Link>
                 <ul className={styles.navbar_menu}>
                     <Link to="/boards" className={styles.navbar_menu_name}>커뮤니티</Link>
                     <Link to="/boards" className={styles.navbar_menu_name}>시간표</Link>
                     <Link to="/boards" className={styles.navbar_menu_name}>급식타임</Link>
                 </ul>
+                {
+                    (location.pathname !== "/") && <SearchBar isInMainPage={false}/>
+                }
                 <div className={styles.navbar_button_list}>
                     {
                         !user ? (

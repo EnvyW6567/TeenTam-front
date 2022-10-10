@@ -13,7 +13,7 @@ import styles from './MainPageMainSection.module.css';
 const MainPageMainSection = (props) => {
     return(
         <section className={styles.main_page_main_section}>
-            <SearchBar />
+            <SearchBar isInMainPage={true}/>
             <section className={styles.boards}>
                 <section className={styles.main_section_board}>
                     <div className={styles.board_header}>

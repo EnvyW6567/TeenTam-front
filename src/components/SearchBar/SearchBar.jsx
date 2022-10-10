@@ -6,9 +6,9 @@ import styles from './SearchBar.module.css';
 // 엔터 버튼 누르면 검색결과 페이지로 연결되게끔 이벤트 핸들러 추가해야 함
 // navbar안에 위치할 경우 사이즈 조정에 대한 작업도 필요
 
-const SearchBar = (props) => {
+const SearchBar = ({isInMainPage}) => {
     return(
-        <div className={styles.search_bar}>
+        <div className={`${styles.search_bar} ${isInMainPage?styles.in_main:styles.not_in_main}`}>
             <IoSearch className={styles.search_icon}/>
             <input 
                 className={styles.search} 

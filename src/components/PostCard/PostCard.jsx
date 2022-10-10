@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getElapsedTime } from '../../services/times';
 import { AiOutlineEye } from "react-icons/ai";
-import { BiLike } from "react-icons/bi";
+import { BiLike, BiCommentDots } from "react-icons/bi";
 import styles from './PostCard.module.css';
 
 const CATEGORY_NAME = {
@@ -39,6 +39,10 @@ const PostCard = ({ category, post }) => {
                     <span className={styles.like_info}>
                         <BiLike className={styles.like_icon} />
                         <span className={styles.like_count}>{post.like}</span>
+                    </span>
+                    <span className={styles.comment_info}>
+                        <BiCommentDots className={styles.comment_icon} />
+                        <span className={styles.comment_count}>{post.like}</span>
                     </span>
                 </span>
             </div>
