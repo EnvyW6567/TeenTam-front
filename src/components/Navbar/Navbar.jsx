@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import logo from '../../assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AUTH } from '../../app';
+import SearchBar from '../SearchBar/SearchBar';
 
 
 // Nabigation Bar역할의 컴포넌트
@@ -12,6 +13,8 @@ import { AUTH } from '../../app';
 const Navbar = (props) => {
     const [user, setUser] = useState(null);
     const authService = useContext(AUTH);
+
+    const location = useLocation();
 
     const logout = () => {
         authService.logout(() => {
@@ -36,6 +39,9 @@ const Navbar = (props) => {
                     <Link to="/boards" className={styles.navbar_menu_name}>시간표</Link>
                     <Link to="/boards" className={styles.navbar_menu_name}>급식타임</Link>
                 </ul>
+                {
+                    (location.pathname !== "/") && <SearchBar isInMainPage={false}/>
+                }
                 <div className={styles.navbar_button_list}>
                     {
                         !user ? (
