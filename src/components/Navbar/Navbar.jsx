@@ -33,7 +33,7 @@ const Navbar = (props) => {
     return(
         <nav className={styles.navbar}>
             <div className={styles.navbar_contents}>
-                <img className={styles.logo} src={logo} alt="TeenTam" />
+                <Link to="/"><img className={styles.logo} src={logo} alt="TeenTam" /></Link>
                 <ul className={styles.navbar_menu}>
                     <Link to="/boards" className={styles.navbar_menu_name}>커뮤니티</Link>
                     <Link to="/boards" className={styles.navbar_menu_name}>시간표</Link>
