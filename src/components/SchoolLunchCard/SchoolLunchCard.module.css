@@ -1,0 +1,85 @@
+.school_lunch_card{
+    width: 368px;
+    height: 356px;
+    border: 1px solid #DBDBDB;
+    border-radius: 8px;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+
+    position: relative;
+}
+
+.school_lunch_title{
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #111111;
+
+    position: absolute;
+    top: 32px;
+    left: 32px;
+}
+
+.menu_select_list{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    width: 304px;
+    height: 40px;
+    border: 1px solid #AC0BF8;
+    border-radius: 8px;
+    overflow: hidden;
+
+    position: absolute;
+    top: 76px;
+    left: 32px;
+
+    cursor: pointer;
+}
+
+.menu{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9400DA;
+}
+
+.selected_menu{
+    background-color: #AC0BF8;
+    color: #ffffff;
+}
+
+.food_list{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    width: 160px;
+    height: 190px;
+
+    position: absolute;
+    top: 140px;
+    left: 104px;
+}
+
+.food{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
