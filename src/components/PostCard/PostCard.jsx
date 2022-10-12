@@ -5,6 +5,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BiLike, BiCommentDots } from "react-icons/bi";
 import styles from './PostCard.module.css';
 
+// 댓글 개수도 가져올 수 있어야 함!
+
 const CATEGORY_NAME = {
     1: "전체",
     2: "아이돌",
@@ -42,7 +44,7 @@ const PostCard = ({ category, post }) => {
                     </span>
                     <span className={styles.comment_info}>
                         <BiCommentDots className={styles.comment_icon} />
-                        <span className={styles.comment_count}>{post.like}</span>
+                        <span className={styles.comment_count}>{post.comments_num}</span>
                     </span>
                 </span>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './MainPageProfile.module.css';
 
@@ -6,9 +6,7 @@ import styles from './MainPageProfile.module.css';
 // 로그인 전 / 후로 다른 모습을 보여주도록 해야 함 o
 // 마이페이지에서 보이는 프로필은 MyPageProfile이란 이름으로 따로 만드는 게 좋을 듯 함
 
-const MainPageProfile = (props) => {
-    const [user, serUser] = useState(JSON.parse(localStorage.getItem("user")));
-
+const MainPageProfile = ({ user }) => {
     return(
         <div className={`${styles.main_page_profile} ${user ? styles.has_user : styles.has_no_user}`}>
             {
