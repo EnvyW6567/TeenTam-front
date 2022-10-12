@@ -39,6 +39,24 @@ class CRUDService {
                 console.log(error);
             })
     }
+    // 게시글 삭제하기
+    deletePost(userId, boardsId, onDelete){
+        const data = {
+            user_id: userId
+        };
+
+        const res = window.confirm("이 글을 삭제하시겠습니까?");
+        if(res){
+            this.axiosApi.delete(`/boards/delete-board/${boardsId}/`, {data})
+                .then(response => {
+                    // 삭제 이후엔 바로 이전 페이지로 이동
+                    onDelete(-1);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+    }
     // 게시글 목록 불러오기
     getPostList(boardsCategory, order, setPostList, setPostCount){
         this.axiosApi.get(`/boards/${boardsCategory}?page=1&offset=5&order=${order}`)

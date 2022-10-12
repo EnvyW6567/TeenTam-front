@@ -1,21 +1,56 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BiLike } from "react-icons/bi";
 import { BsChatDots } from "react-icons/bs";
-import { CRUD } from '../../app';
 import { getElapsedTime } from '../../services/times';
+import { TbDotsVertical } from "react-icons/tb";
+import { CRUD } from '../../app';
 import styles from './PostContent.module.css';
 
 const PostContent = ({post, setPost}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     const crudService = useContext(CRUD);
 
+    const moreRef = useRef();
+    const navigate = useNavigate();
+    // 좋아요
     const handleClickLike = () => {
         crudService.updatePostLike(user.id, post.boards_id, setPost);
+    }
+    // 더보기 클릭 시(점 세개짜리)
+    const handleClickMore = () => {
+        moreRef.current.classList.toggle(styles.show_more);
+    }
+    // 수정 or 삭제 클릭 시. 수정은 추후 더 구현이 필요
+    const handleClickEditOrDelete = (e) => {
+        if(e.target.tagName === "LI"){
+            switch(e.target.dataset.value){
+                case "edit":
+                    console.log("수정합니다");
+                    break;
+                case "delete":
+                    crudService.deletePost(user.id, post.boards_id, navigate);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     return(
         <section className={styles.post_content_section}>
             <h1 className={styles.post_title}>{post?.title}</h1>
+            {
+                user?.id === post?.boards_writer && (
+                    <>
+                        <TbDotsVertical className={styles.click_more} onClick={handleClickMore} />
+                        <ul className={styles.edit_or_delete} ref={moreRef} onClick={handleClickEditOrDelete}>
+                            <li className={styles.edit} data-value="edit">수정하기</li>
+                            <li className={styles.delete} data-value="delete">삭제하기</li>
+                        </ul>
+                    </>
+                )
+            }
             <div className={styles.post_info}>
                 <span className={styles.post_writer_icon}></span>
                 <span className={styles.post_writer}>{post?.writer_username}</span>
