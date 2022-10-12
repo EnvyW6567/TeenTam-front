@@ -60,7 +60,8 @@ const WritePostPage = (props) => {
                 category,
                 user.id,
                 title,
-                content
+                content,
+                navigate
             );
         }
     }

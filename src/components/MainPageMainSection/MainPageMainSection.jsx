@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BiCommentDots } from "react-icons/bi";
+import { BsChatDots } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import SearchBar from '../SearchBar/SearchBar';
 import styles from './MainPageMainSection.module.css';
@@ -30,7 +30,7 @@ const MainPageMainSection = (props) => {
                                     <span className={styles.view_count}>80</span>
                                 </span>
                                 <span className={styles.comment_info}>
-                                    <BiCommentDots className={styles.comment_icon} />
+                                    <BsChatDots className={styles.comment_icon} />
                                     <span className={styles.view_count}>105</span>
                                 </span>
                             </span>
@@ -44,7 +44,7 @@ const MainPageMainSection = (props) => {
                                     <span className={styles.view_count}>94</span>
                                 </span>
                                 <span className={styles.comment_info}>
-                                    <BiCommentDots className={styles.comment_icon} />
+                                    <BsChatDots className={styles.comment_icon} />
                                     <span className={styles.view_count}>29</span>
                                 </span>
                             </span>
@@ -58,7 +58,7 @@ const MainPageMainSection = (props) => {
                                     <span className={styles.view_count}>256</span>
                                 </span>
                                 <span className={styles.comment_info}>
-                                    <BiCommentDots className={styles.comment_icon} />
+                                    <BsChatDots className={styles.comment_icon} />
                                     <span className={styles.view_count}>151</span>
                                 </span>
                             </span>
@@ -72,7 +72,7 @@ const MainPageMainSection = (props) => {
                                     <span className={styles.view_count}>80</span>
                                 </span>
                                 <span className={styles.comment_info}>
-                                    <BiCommentDots className={styles.comment_icon} />
+                                    <BsChatDots className={styles.comment_icon} />
                                     <span className={styles.view_count}>105</span>
                                 </span>
                             </span>
@@ -86,7 +86,7 @@ const MainPageMainSection = (props) => {
                                     <span className={styles.view_count}>82</span>
                                 </span>
                                 <span className={styles.comment_info}>
-                                    <BiCommentDots className={styles.comment_icon} />
+                                    <BsChatDots className={styles.comment_icon} />
                                     <span className={styles.view_count}>14</span>
                                 </span>
                             </span>
@@ -102,25 +102,25 @@ const MainPageMainSection = (props) => {
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
                             <span className={styles.content_info}>
-                                <BiCommentDots className={styles.comment_icon} />
+                                <BsChatDots className={styles.comment_icon} />
                                 <span className={styles.comment_count}>120</span>
                             </span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>83</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>83</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>    
                 </section>
@@ -132,23 +132,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>      
                 </section>
@@ -160,23 +160,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>  
                 </section>
@@ -188,23 +188,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>  
                 </section>
@@ -216,23 +216,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>  
                 </section>
@@ -244,23 +244,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>  
                 </section>
@@ -272,23 +272,23 @@ const MainPageMainSection = (props) => {
                     <div className={styles.board_body}>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                         <div className={styles.board_content}>
                             BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BiCommentDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
+                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
                         </div>
                     </div>  
                 </section>

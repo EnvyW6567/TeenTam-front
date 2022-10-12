@@ -3,7 +3,7 @@ class CRUDService {
         this.axiosApi = axiosApi;
     }
     // 게시글 생성
-    createPost(boards_category, boards_writer, title, content){
+    createPost(boards_category, boards_writer, title, content, onCreate){
         const data = {
             boards_category: 1,
             boards_writer: parseInt(boards_writer),
@@ -13,7 +13,8 @@ class CRUDService {
 
         this.axiosApi.post("/boards/create-board/", data)
             .then(response => {
-                console.log(response);
+                const newBoardsId = response.data.boards_id;
+                onCreate(`/boards/${boards_category}/id/${newBoardsId}/`);
             })
             .catch(error => {
                 console.log(error);
@@ -37,6 +38,24 @@ class CRUDService {
             .catch(error => {
                 console.log(error);
             })
+    }
+    // 게시글 삭제하기
+    deletePost(userId, boardsId, onDelete){
+        const data = {
+            user_id: userId
+        };
+
+        const res = window.confirm("이 글을 삭제하시겠습니까?");
+        if(res){
+            this.axiosApi.delete(`/boards/delete-board/${boardsId}/`, {data})
+                .then(response => {
+                    // 삭제 이후엔 바로 이전 페이지로 이동
+                    onDelete(-1);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
     // 게시글 목록 불러오기
     getPostList(boardsCategory, order, setPostList, setPostCount){
