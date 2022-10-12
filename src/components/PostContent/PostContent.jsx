@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { BiCommentDots, BiLike } from "react-icons/bi";
+import { BiLike } from "react-icons/bi";
+import { BsChatDots } from "react-icons/bs";
 import { CRUD } from '../../app';
 import { getElapsedTime } from '../../services/times';
 import styles from './PostContent.module.css';
@@ -24,7 +25,7 @@ const PostContent = ({post, setPost}) => {
                     <span className={styles.like_count}>{post?.like}</span>
                 </span>
                 <span className={styles.comment_info}>
-                    <BiCommentDots className={styles.comment_icon} />
+                    <BsChatDots className={styles.comment_icon} />
                     <span className={styles.comment_count}>{post?.comments_num}</span>
                 </span>
             </div>

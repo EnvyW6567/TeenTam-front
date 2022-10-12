@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getElapsedTime } from '../../services/times';
 import { AiOutlineEye } from "react-icons/ai";
-import { BiLike, BiCommentDots } from "react-icons/bi";
+import { BiLike } from "react-icons/bi";
+import { BsChatDots } from "react-icons/bs";
 import styles from './PostCard.module.css';
 
 // 댓글 개수도 가져올 수 있어야 함!
@@ -43,7 +44,7 @@ const PostCard = ({ category, post }) => {
                         <span className={styles.like_count}>{post.like}</span>
                     </span>
                     <span className={styles.comment_info}>
-                        <BiCommentDots className={styles.comment_icon} />
+                        <BsChatDots className={styles.comment_icon} />
                         <span className={styles.comment_count}>{post.comments_num}</span>
                     </span>
                 </span>
