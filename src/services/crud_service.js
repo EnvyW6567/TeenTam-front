@@ -3,7 +3,7 @@ class CRUDService {
         this.axiosApi = axiosApi;
     }
     // 게시글 생성
-    createPost(boards_category, boards_writer, title, content){
+    createPost(boards_category, boards_writer, title, content, onCreate){
         const data = {
             boards_category: 1,
             boards_writer: parseInt(boards_writer),
@@ -13,7 +13,8 @@ class CRUDService {
 
         this.axiosApi.post("/boards/create-board/", data)
             .then(response => {
-                console.log(response);
+                const newBoardsId = response.data.boards_id;
+                onCreate(`/boards/${boards_category}/id/${newBoardsId}/`);
             })
             .catch(error => {
                 console.log(error);
