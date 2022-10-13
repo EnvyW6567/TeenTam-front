@@ -24,15 +24,15 @@ class CRUDService {
     getPost(boardsCategory, boardsId, setPost, setCommentsList){
         this.axiosApi.get(`/boards/${boardsCategory}/id/${boardsId}/`)
             .then(response => {
-                const data = response.data.data[0];
+                const data = response.data.data;
                 setCommentsList(data.comments);
 
                 const { boards_writer, content, title, like,
-                    delete_date, writer_username, pub_date } = data;
+                    hit, delete_date, writer_username, pub_date } = data;
                 
                 setPost({
-                    boards_id: boardsId, boards_writer, comments_num: data.comments.length, content, 
-                    title, like, delete_date, writer_username, pub_date
+                    boards_id: parseInt(boardsId), boards_writer, comments_num: data.comments.length, content, 
+                    title, like, hit, delete_date, writer_username, pub_date
                 })
             })
             .catch(error => {
@@ -59,9 +59,10 @@ class CRUDService {
     }
     // 게시글 목록 불러오기
     getPostList(boardsCategory, order, setPostList, setPostCount){
-        this.axiosApi.get(`/boards/${boardsCategory}?page=1&offset=5&order=${order}`)
+        this.axiosApi.get(`/boards/${boardsCategory}?page=1&offset=30&order=${order}`)
             .then(response => {
                 setPostList(response.data.data);
+                // 전체 게시글 개수 받아오기
                 setPostCount(response.data.boards_num);
             })
             .catch(error => {

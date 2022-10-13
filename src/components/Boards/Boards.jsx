@@ -11,7 +11,7 @@ const Boards = (props) => {
     const [postList, setPostList] = useState([]);
     const [postCount, setPostCount] = useState(0);
 
-    const [order, setOrder] = useState("-pub_date");
+    const [order, setOrder] = useState("pub_date");
 
     useEffect(() => {
         crudService.getPostList(category, order, setPostList, setPostCount);
