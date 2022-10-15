@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from '../Pagination/Pagination';
 import PostCard from '../PostCard/PostCard';
 import styles from './PostList.module.css';
 
-const PostList = ({category, postCount, postList, onSelect}) => {
+const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPage, setOrder}) => {
     const [orderName, setOrderName] = useState("최신순");
 
     const handleSelectOrder = (e) => {
         if(e.target.tagName === "LI"){
-            onSelect(e.target.dataset.value);
+            setOrder(e.target.dataset.value);
             switch(e.target.dataset.value) {
-                case '-pub_date':  
+                case 'pub_date':  
                     setOrderName("최신순");
                     break;
-                case '-hit':  
+                case 'hit':  
                     setOrderName("조회순");
                     break;
-                case '-like':
+                case 'like':
                     setOrderName("좋아요순");
                     break;
                 default:
@@ -31,9 +32,9 @@ const PostList = ({category, postCount, postList, onSelect}) => {
                 <div className={styles.dropdown_order_menu}>
                     <button className={styles.set_order_button}>{orderName}</button>
                     <ul className={styles.order_list} onClick={handleSelectOrder} >
-                        <li className={styles.order} data-value="-pub_date">최신순</li>
-                        <li className={styles.order} data-value="-hit">조회순</li>
-                        <li className={styles.order} data-value="-like">좋아요순</li>
+                        <li className={styles.order} data-value="pub_date">최신순</li>
+                        <li className={styles.order} data-value="hit">조회순</li>
+                        <li className={styles.order} data-value="like">좋아요순</li>
                     </ul>
                 </div>
                 <Link to="/write-post" className={styles.go_to_write_post}>게시글 작성하기</Link>
@@ -47,6 +48,9 @@ const PostList = ({category, postCount, postList, onSelect}) => {
                         return <PostCard key={post.id} category={category} post={post}/>;
                     })
                 }
+            </div>
+            <div className={styles.pagination}>
+                <Pagination firstPage={firstPage} postCount={postCount} setFirstPage={setFirstPage} setPage={setPage}/>
             </div>
         </section>
     )

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiLike } from "react-icons/bi";
+import { AiOutlineEye } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
 import { getElapsedTime } from '../../services/times';
 import { TbDotsVertical } from "react-icons/tb";
@@ -55,6 +56,10 @@ const PostContent = ({post, setPost}) => {
                 <span className={styles.post_writer_icon}></span>
                 <span className={styles.post_writer}>{post?.writer_username}</span>
                 <span className={styles.post_pub_date}>{getElapsedTime(post?.pub_date)}</span>
+                <span className={styles.view_info}>
+                    <AiOutlineEye className={styles.view_icon} />
+                    <span className={styles.view_count}>{post?.hit}</span>
+                </span>
                 <span className={styles.like_info}>
                     <BiLike className={styles.like_icon} />
                     <span className={styles.like_count}>{post?.like}</span>

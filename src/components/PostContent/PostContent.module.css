@@ -107,6 +107,20 @@
     margin-left: 18px;
 }
 
+.view_info{
+    position: absolute;
+    right: 92px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+
+    display: flex;
+    align-items: center;
+}
+
 .like_info{
     position: absolute;
     right: 45px;
@@ -143,7 +157,11 @@
     font-size: 16px;
 }
 
-.comment_count, .like_count{
+.view_icon{
+    font-size: 18px;
+}
+
+.comment_count, .like_count, .view_count{
     margin-left: 4px;
 }
 

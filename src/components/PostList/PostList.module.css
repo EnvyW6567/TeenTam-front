@@ -132,3 +132,9 @@
     display: table;
     border-collapse: collapse;
 }
+
+.pagination{
+    width: 324px;
+
+    margin: 48px auto 200px;
+}
