@@ -1,0 +1,47 @@
+.pagination{
+    width: 324px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    width: 36px;
+    height: 36px;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666666;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    transition: all .1s ease-out;
+}
+
+.button:hover{
+    background: #e5acff;
+}
+
+.current{
+    background: #AC0BF8;
+    border: 1px solid #AC0BF8;
+    color: #ffffff;
+}
+
+.current:hover{
+    background: #AC0BF8;
+}

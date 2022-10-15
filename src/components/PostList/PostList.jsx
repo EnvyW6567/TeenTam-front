@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from '../Pagination/Pagination';
 import PostCard from '../PostCard/PostCard';
 import styles from './PostList.module.css';
 
-const PostList = ({category, postCount, postList, onSelect}) => {
+const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPage, setOrder}) => {
     const [orderName, setOrderName] = useState("최신순");
 
     const handleSelectOrder = (e) => {
         if(e.target.tagName === "LI"){
-            onSelect(e.target.dataset.value);
+            setOrder(e.target.dataset.value);
             switch(e.target.dataset.value) {
                 case 'pub_date':  
                     setOrderName("최신순");
@@ -47,6 +48,9 @@ const PostList = ({category, postCount, postList, onSelect}) => {
                         return <PostCard key={post.id} category={category} post={post}/>;
                     })
                 }
+            </div>
+            <div className={styles.pagination}>
+                <Pagination firstPage={firstPage} postCount={postCount} setFirstPage={setFirstPage} setPage={setPage}/>
             </div>
         </section>
     )
