@@ -5,7 +5,7 @@ class CRUDService {
     // 게시글 생성
     createPost(boards_category, boards_writer, title, content, onCreate){
         const data = {
-            boards_category: 1,
+            boards_category,
             boards_writer: parseInt(boards_writer),
             title,
             content
