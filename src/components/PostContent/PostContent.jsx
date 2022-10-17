@@ -8,7 +8,7 @@ import { TbDotsVertical } from "react-icons/tb";
 import { CRUD } from '../../app';
 import styles from './PostContent.module.css';
 
-const PostContent = ({post, setPost}) => {
+const PostContent = ({post, setPost, category}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     const crudService = useContext(CRUD);
 
@@ -27,7 +27,12 @@ const PostContent = ({post, setPost}) => {
         if(e.target.tagName === "LI"){
             switch(e.target.dataset.value){
                 case "edit":
-                    console.log("수정합니다");
+                    navigate("/edit-post", {
+                        state: {
+                            category,
+                            id: post.boards_id
+                        }
+                    })
                     break;
                 case "delete":
                     crudService.deletePost(user.id, post.boards_id, navigate);

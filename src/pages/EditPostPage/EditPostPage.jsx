@@ -1,22 +1,22 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import WritePostBar from '../../components/WritePostBar/WritePostBar';
 import { AUTH, CRUD } from '../../app';
-import { useNavigate } from 'react-router-dom';
-import styles from './WritePostPage.module.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styles from './EditPostPage.module.css';
 
-const WritePostPage = (props) => {
+const EditPostPage = (props) => {
     const crudService = useContext(CRUD);
     const authService = useContext(AUTH);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const boardsCategory = location.state?.category;
+    const boardsId = location.state?.id;
 
     const [user, setUser] = useState(null);
-
-    const [category, setCategory] = useState("");
-
-    const titleRef = useRef();
-    const contentRef = useRef();
-
-    const navigate = useNavigate();
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
 
     useEffect(() => {
         async function keepLogin(){
@@ -29,6 +29,7 @@ const WritePostPage = (props) => {
                 const res = await authService.refreshAccessToken();
                 if(res){
                     setUser(JSON.parse(userData));
+                    crudService.getOldPost(boardsCategory, boardsId, setTitle, setContent);
                 }
                 else{
                     alert("로그인이 만료됐습니다. 다시 로그인해주세요");
@@ -37,41 +38,36 @@ const WritePostPage = (props) => {
             }
         }
         keepLogin();
-    }, [navigate, setUser, authService]);
+    }, [navigate, boardsCategory, boardsId, authService, crudService]);
 
-    // 자동으로 textArea 높이 조정
-    const handleChangeContent = () => {
-        contentRef.current.style.height = "auto";
-        contentRef.current.style.height = contentRef.current.scrollHeight + "px";
+    const handleChangeTitle = (e) => {
+        const newTitle = e.target.value;
+        setTitle(newTitle);
     }
-    // 카테고리 설정
-    const handleChangeCaterogy = (e) => {
-        setCategory(e.target.value);
+    // content조정 및 자동으로 textArea 높이 조정 
+    const handleChangeContent = (e) => {
+        const newContent = e.target.value;
+        setContent(newContent);
+        e.target.style.height = "auto";
+        e.target.style.height = e.target.scrollHeight + "px";
     }
     // 글 작성 
     const handleClickWrite = (e) => {
         e.preventDefault();
-
-        const title = titleRef.current.value;
-        const content = contentRef.current.value;
         
         if(validation(title, content)){
-            crudService.createPost(
-                category,
-                user.id,
-                title,
-                content,
+            crudService.updatePost(
+                boardsId, 
+                user.id, 
+                title, 
+                content, 
                 navigate
             );
         }
     }
     // 유효성검사
     const validation = (title, content) => {
-        if(!category){
-            alert("카테고리를 선택해주세요");
-            return false;
-        }
-        else if(!title){
+        if(!title){
             alert("제목을 입력해주세요");
             return false;
         }
@@ -87,22 +83,23 @@ const WritePostPage = (props) => {
             <Navbar />
             <form className={styles.write_post_form}>
                 <div className={styles.write_post_input_box}>
-                    <select className={styles.category_input} onChange={handleChangeCaterogy} value={category}>
-                        <option value="">카테고리</option>
-                        <option value="1">아이돌</option>
-                        <option value="2">친구</option>
-                        <option value="3">가족</option>
-                        <option value="4">썸/연애</option>
+                    <select className={styles.category_input} value={boardsCategory} disabled={true}>
+                        <option value="" >카테고리</option>
+                        <option value="1">썸/연애</option>
+                        <option value="2">진로</option>
+                        <option value="3">학교</option>
+                        <option value="4">스타일</option>
                     </select>
                 </div>
                 <div className={styles.write_post_input_box}>
                     <input 
+                        onChange={handleChangeTitle}
                         placeholder='제목' 
                         className={styles.title_input} 
                         id={styles.title} 
                         type="text" 
                         name="title"
-                        ref={titleRef}
+                        value={title}
                     />
                 </div>
                 <div className={styles.write_post_input_box}>
@@ -113,8 +110,8 @@ const WritePostPage = (props) => {
                         id={styles.content} 
                         type="text" 
                         name="content"
-                        ref={contentRef}
                         rows={1}
+                        value={content}
                     >
                     </textarea>
                 </div>
@@ -124,4 +121,4 @@ const WritePostPage = (props) => {
     )
 }
 
-export default WritePostPage;
+export default EditPostPage;

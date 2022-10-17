@@ -15,7 +15,7 @@ import styles from './Boards.module.css';
 const Boards = (props) => {
     const crudService = useContext(CRUD)
 
-    const [category, setCategory] = useState(1);
+    const [category, setCategory] = useState(0);
     const [postList, setPostList] = useState([]);
     const [postCount, setPostCount] = useState(0);
     const [firstPage, setFirstPage] = useState(1);
@@ -29,7 +29,7 @@ const Boards = (props) => {
     return(
         <section className={styles.boards_section}>
             <h1 className={styles.boards_section_title}>커뮤니티</h1>
-            <CategoryList onSelect={setCategory}/>
+            <CategoryList setCategory={setCategory} setFirstPage={setFirstPage} setPage={setPage} />
             <PostList 
                 category={category} 
                 firstPage={firstPage}

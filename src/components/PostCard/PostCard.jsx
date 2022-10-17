@@ -9,22 +9,22 @@ import styles from './PostCard.module.css';
 // 댓글 개수도 가져올 수 있어야 함!
 
 const CATEGORY_NAME = {
-    1: "전체",
-    2: "아이돌",
-    3: "친구",
-    4: "가족",
-    5: "썸/연애",
-    6: "학교",
-    7: "진로",
-    8: "스타일",
-    9: "공지사항",
+    0: "전체",
+    1: "아이돌",
+    2: "친구",
+    3: "가족",
+    4: "썸/연애",
+    5: "학교",
+    6: "진로",
+    7: "스타일",
+    8: "공지사항",
 }
 
 const PostCard = ({ category, post }) => {
     return(
         <Link to={`/boards/${category}/id/${post.id}/`} className={styles.post_card}>
             <div className={styles.related_categories}>
-                <div className={styles.category_box}>{CATEGORY_NAME[category]}</div>
+                <div className={styles.category_box}>{CATEGORY_NAME[post.boards_category]}</div>
             </div>
             <h2 className={styles.post_title}>{post.title}</h2>
             <p className={styles.post_content}>{post.content}</p>

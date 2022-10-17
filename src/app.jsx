@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import MainPage from './pages/MainPage/MainPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import WritePostPage from './pages/WritePostPage/WritePostPage';
+import EditPostPage from './pages/EditPostPage/EditPostPage';
 import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import './app.css';
@@ -22,6 +23,7 @@ function App({authService, crudService}) {
             <Route path="/login" element={<LoginPage authService={authService} />}/>
             <Route path="/signup" element={<SignupPage authService={authService} />}/>
             <Route path="/write-post" element={<WritePostPage />}/>
+            <Route path="/edit-post" element={<EditPostPage />}/>
             <Route path="/boards" element={<BoardsPage />}/>
             <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage />}/>
           </Routes>

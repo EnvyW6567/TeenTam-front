@@ -5,7 +5,7 @@ class CRUDService {
     // 게시글 생성
     createPost(boards_category, boards_writer, title, content, onCreate){
         const data = {
-            boards_category: 1,
+            boards_category,
             boards_writer: parseInt(boards_writer),
             title,
             content
@@ -34,6 +34,36 @@ class CRUDService {
                     boards_id: parseInt(boardsId), boards_writer, comments_num: data.comments.length, content, 
                     title, like, hit, delete_date, writer_username, pub_date
                 })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    // 게시글 불러오기 - 수정을 위해
+    getOldPost(boardsCategory, boardsId, setTitle, setContent){
+        this.axiosApi.get(`/boards/${boardsCategory}/id/${boardsId}/`)
+            .then(response => {
+                const data = response.data.data;
+                const { content, title } = data;
+                
+                setTitle(title);
+                setContent(content);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+    // 게시글 수정
+    updatePost(boards_id, user_id, title, content, onUpdate){
+        const data = {
+            title,
+            content,
+            user_id
+        };
+
+        this.axiosApi.post(`/boards/board-modify/${boards_id}/`, data)
+            .then(response => {
+                onUpdate(-1);
             })
             .catch(error => {
                 console.log(error);

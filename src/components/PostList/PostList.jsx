@@ -50,7 +50,13 @@ const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPa
                 }
             </div>
             <div className={styles.pagination}>
-                <Pagination firstPage={firstPage} postCount={postCount} setFirstPage={setFirstPage} setPage={setPage}/>
+                <Pagination 
+                    category={category}
+                    firstPage={firstPage} 
+                    postCount={postCount} 
+                    setFirstPage={setFirstPage} 
+                    setPage={setPage}
+                />
             </div>
         </section>
     )
