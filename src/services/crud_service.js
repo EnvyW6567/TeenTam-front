@@ -88,12 +88,12 @@ class CRUDService {
         }
     }
     // 게시글 목록 불러오기
-    getPostList(boardsCategory, order, page, setPostList, setPostCount){
-        this.axiosApi.get(`/boards/${boardsCategory}?page=${page}&offset=10&order=${order}`)
+    getPostList(boardsCategory, order, page, offset, setPostList, setPostCount){
+        this.axiosApi.get(`/boards/${boardsCategory}?page=${page}&offset=${offset}&order=${order}`)
             .then(response => {
                 setPostList(response.data.data);
                 // 전체 게시글 개수 받아오기
-                setPostCount(response.data.boards_num);
+                setPostCount && setPostCount(response.data.boards_num);
             })
             .catch(error => {
                 console.log(error);

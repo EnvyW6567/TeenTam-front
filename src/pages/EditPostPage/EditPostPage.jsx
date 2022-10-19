@@ -85,10 +85,13 @@ const EditPostPage = (props) => {
                 <div className={styles.write_post_input_box}>
                     <select className={styles.category_input} value={boardsCategory} disabled={true}>
                         <option value="" >카테고리</option>
-                        <option value="1">썸/연애</option>
-                        <option value="2">진로</option>
-                        <option value="3">학교</option>
-                        <option value="4">스타일</option>
+                        <option value="1">아이돌</option>
+                        <option value="2">친구</option>
+                        <option value="3">가족</option>
+                        <option value="4">썸/연애</option>
+                        <option value="5">학교</option>
+                        <option value="6">진로</option>
+                        <option value="7">스타일</option>
                     </select>
                 </div>
                 <div className={styles.write_post_input_box}>
