@@ -45,7 +45,7 @@ const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPa
             <div className={styles.post_list}>
                 {
                     postList.map((post) => {
-                        return <PostCard key={post.id} category={category} post={post}/>;
+                        return <PostCard key={post.id} post={post}/>;
                     })
                 }
             </div>

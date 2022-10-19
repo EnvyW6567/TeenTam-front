@@ -20,9 +20,9 @@ const CATEGORY_NAME = {
     8: "공지사항",
 }
 
-const PostCard = ({ category, post }) => {
+const PostCard = ({ post }) => {
     return(
-        <Link to={`/boards/${category}/id/${post.id}/`} className={styles.post_card}>
+        <Link to={`/boards/${post.boards_category}/id/${post.id}/`} className={styles.post_card}>
             <div className={styles.related_categories}>
                 <div className={styles.category_box}>{CATEGORY_NAME[post.boards_category]}</div>
             </div>

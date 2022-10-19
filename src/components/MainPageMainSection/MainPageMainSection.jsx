@@ -4,6 +4,7 @@ import { BsChatDots } from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 import SearchBar from '../SearchBar/SearchBar';
 import styles from './MainPageMainSection.module.css';
+import MainPagePostList from '../MainPagePostList/MainPagePostList';
 
 // MainPage에서의 MainSection 컴포넌트
 // SearchBar 및 주요 게시판의 글들을 보여줌
@@ -94,203 +95,25 @@ const MainPageMainSection = (props) => {
                     </div>    
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        아이돌🎙
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}>
-                                <BsChatDots className={styles.comment_icon} />
-                                <span className={styles.comment_count}>120</span>
-                            </span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>83</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>    
+                    <MainPagePostList category={1} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        친구👭
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>      
+                    <MainPagePostList category={2} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        학교🏫
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>    
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>  
+                    <MainPagePostList category={3} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        썸/연애💗
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>    
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>  
+                    <MainPagePostList category={4} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        진로🔎
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>    
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>  
+                    <MainPagePostList category={6} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        스타일👖
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>    
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>  
+                    <MainPagePostList category={7} />
                 </section>
                 <section className={styles.main_section_board}>
-                    <div className={styles.board_header}>
-                        공지사항✔️
-                        <Link className={styles.go_more} to="/">더보기 &#62;</Link>
-                    </div>    
-                    <div className={styles.board_body}>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            블핑 이번노래 진짜 미쳤다..
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            뉴진스 단국대 축제 온다는데
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                        <div className={styles.board_content}>
-                            BTS 신곡 나온대!!
-                            <span className={styles.content_info}><BsChatDots className={styles.comment_icon} /><span className={styles.comment_count}>120</span></span>
-                        </div>
-                    </div>  
+                    <MainPagePostList category={8} />
                 </section>
             </section>
         </section>

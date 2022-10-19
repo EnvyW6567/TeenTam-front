@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CRUD } from '../../app';
 import CategoryList from '../CategoryList/CategoryList';
 import PostList from '../PostList/PostList';
@@ -11,11 +12,13 @@ import styles from './Boards.module.css';
 //             -> 앞으로 페이지네이터에서 지금 보이는 페이지번호들을 한 뷰에 보이는 페이지들 이라고 정의하겠음
 // page : 현재 보고 있는 페이지
 // order : 정렬기준
+const POSTS_PER_PAGE = 10;
 
 const Boards = (props) => {
     const crudService = useContext(CRUD)
+    const location = useLocation();
 
-    const [category, setCategory] = useState(0);
+    const [category, setCategory] = useState(location.state?.category || 0);
     const [postList, setPostList] = useState([]);
     const [postCount, setPostCount] = useState(0);
     const [firstPage, setFirstPage] = useState(1);
@@ -23,13 +26,13 @@ const Boards = (props) => {
     const [order, setOrder] = useState("pub_date");
 
     useEffect(() => {
-        crudService.getPostList(category, order, page, setPostList, setPostCount);
+        crudService.getPostList(category, order, page, POSTS_PER_PAGE, setPostList, setPostCount);
     }, [crudService, category, page, order, setPostList, setPostCount])
 
     return(
         <section className={styles.boards_section}>
             <h1 className={styles.boards_section_title}>커뮤니티</h1>
-            <CategoryList setCategory={setCategory} setFirstPage={setFirstPage} setPage={setPage} />
+            <CategoryList category={category} setCategory={setCategory} setFirstPage={setFirstPage} setPage={setPage} />
             <PostList 
                 category={category} 
                 firstPage={firstPage}
