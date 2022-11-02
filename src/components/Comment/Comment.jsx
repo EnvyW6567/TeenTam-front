@@ -15,17 +15,23 @@ const Comment = ({ comment }) => {
     return(
         <div className={styles.comment}>
             <div className={styles.comment_info}>
-                <span className={styles.comment_writer}>{comment.username}</span>
-                <span className={styles.comment_pub_date}>{getElapsedTime(comment.pub_date)}</span>
-                { user.id === comment.comments_writer && (
-                    <BiTrashAlt 
-                        className={styles.comment_delete_button} 
-                        onClick={handleClickDelete}
-                        />)
-                    }
+                {
+                    !comment.delete_date && (
+                        <>
+                            <span className={styles.comment_writer}>{comment.username}</span>
+                            <span className={styles.comment_pub_date}>{getElapsedTime(comment.pub_date)}</span>
+                            { user.id === comment.comments_writer && (
+                                <BiTrashAlt 
+                                    className={styles.comment_delete_button} 
+                                    onClick={handleClickDelete}
+                                />)
+                            }
+                        </>
+                    )
+                }
                 <div className={styles.comment_writer_image}></div>
             </div>
-            <pre className={styles.comment_content}>{comment.content}</pre>
+            <pre className={styles.comment_content}>{!comment.delete_date ? comment.content : "삭제된 댓글입니다."}</pre>
         </div>
     )
 }

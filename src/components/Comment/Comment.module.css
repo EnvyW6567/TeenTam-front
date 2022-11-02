@@ -74,3 +74,8 @@
 
     margin: 0 20px 16px 20px;
 }
+
+.deleted_comment{
+    height: 55px;
+    color: #cd76f5;
+}
