@@ -144,6 +144,23 @@ class CRUDService {
                 console.log(error);
             })
     }
+    // 댓글 삭제하기
+    deleteComment(userId, commentsId){
+        const data = {
+            user_id: userId
+        };
+
+        const res = window.confirm("이 댓글을 삭제하시겠습니까?");
+        if(res){
+            this.axiosApi.delete(`/boards/delete-comment/${commentsId}/`, {data})
+                .then(response => {
+                    console.log("삭제 완료");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+    }
 }
 
 export default CRUDService;
