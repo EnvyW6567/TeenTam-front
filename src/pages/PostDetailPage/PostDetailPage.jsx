@@ -9,7 +9,7 @@ import PostContent from '../../components/PostContent/PostContent';
 import styles from './PostDetailPage.module.css';
 
 const PostDetailPage = (props) => {
-    const [post, setPost] = useState(null);
+    const [post, setPost] = useState({});
     const [commentsList, setCommentsList] = useState([]);
 
     const crudService = useContext(CRUD);
@@ -48,7 +48,7 @@ const PostDetailPage = (props) => {
             <Navbar />
             <PostContent post={post} setPost={setPost} category={boardsCategory} />
             <CommentCreateForm boardsId={boardsId} />
-            <CommentsList commentsList={commentsList} />
+            <CommentsList commentsList={commentsList} setCommentsList={setCommentsList} />
             <Footer />
         </div>
     )
