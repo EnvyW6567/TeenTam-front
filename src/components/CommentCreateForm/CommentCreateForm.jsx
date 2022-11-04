@@ -4,7 +4,7 @@ import styles from './CommentCreateForm.module.css';
 
 const MAX_LENGTH = 1000;
 
-const CommentCreateForm = ({boardsId}) => {
+const CommentCreateForm = ({ boardsId, onCreate }) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     const [wordCount, setWordCount] = useState(0);
 
@@ -24,7 +24,7 @@ const CommentCreateForm = ({boardsId}) => {
         e.preventDefault();
         const comment = commentRef.current.value;
         if(validate(comment)){
-            crudService.createComment(user.id, boardsId, comment);
+            crudService.createComment(user.id, boardsId, comment, onCreate);
         }
     }
 

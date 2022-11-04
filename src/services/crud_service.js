@@ -129,7 +129,7 @@ class CRUDService {
         }
     }
     // 댓글 생성
-    createComment(userId, boardsId, content){
+    createComment(userId, boardsId, content, onCreate){
         const data = {
             comments_writer: userId,
             comments_board: boardsId,
@@ -138,7 +138,7 @@ class CRUDService {
 
         this.axiosApi.post("/boards/create-comment/", data)
             .then(response => {
-                console.log(response);
+                onCreate(response.data.data);
             })
             .catch(error => {
                 console.log(error);

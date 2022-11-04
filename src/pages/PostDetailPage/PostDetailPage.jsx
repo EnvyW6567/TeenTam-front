@@ -22,6 +22,14 @@ const PostDetailPage = (props) => {
     const boardsCategory = params.boards_category;
     const boardsId = params.boards_id;
 
+    const onCreaateComentsList = (commentsList) => {
+        setCommentsList(commentsList);
+        setPost({
+            ...post,
+            comments_num: commentsList.length
+        });
+    }
+
     useEffect(() => {
         async function keepLogin(){
             const userData = localStorage.getItem("user");
@@ -47,7 +55,7 @@ const PostDetailPage = (props) => {
         <div className={styles.post_detail_page}>
             <Navbar />
             <PostContent post={post} setPost={setPost} category={boardsCategory} />
-            <CommentCreateForm boardsId={boardsId} />
+            <CommentCreateForm boardsId={boardsId} onCreate={onCreaateComentsList}/>
             <CommentsList commentsList={commentsList} setCommentsList={setCommentsList} />
             <Footer />
         </div>
