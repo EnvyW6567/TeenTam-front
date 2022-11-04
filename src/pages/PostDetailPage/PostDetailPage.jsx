@@ -9,7 +9,7 @@ import PostContent from '../../components/PostContent/PostContent';
 import styles from './PostDetailPage.module.css';
 
 const PostDetailPage = (props) => {
-    const [post, setPost] = useState(null);
+    const [post, setPost] = useState({});
     const [commentsList, setCommentsList] = useState([]);
 
     const crudService = useContext(CRUD);
@@ -21,6 +21,14 @@ const PostDetailPage = (props) => {
     
     const boardsCategory = params.boards_category;
     const boardsId = params.boards_id;
+
+    const onCreaateComentsList = (commentsList) => {
+        setCommentsList(commentsList);
+        setPost({
+            ...post,
+            comments_num: commentsList.length
+        });
+    }
 
     useEffect(() => {
         async function keepLogin(){
@@ -47,8 +55,8 @@ const PostDetailPage = (props) => {
         <div className={styles.post_detail_page}>
             <Navbar />
             <PostContent post={post} setPost={setPost} category={boardsCategory} />
-            <CommentCreateForm boardsId={boardsId} />
-            <CommentsList commentsList={commentsList} />
+            <CommentCreateForm boardsId={boardsId} onCreate={onCreaateComentsList}/>
+            <CommentsList commentsList={commentsList} setCommentsList={setCommentsList} />
             <Footer />
         </div>
     )

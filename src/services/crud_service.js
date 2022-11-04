@@ -129,7 +129,7 @@ class CRUDService {
         }
     }
     // 댓글 생성
-    createComment(userId, boardsId, content){
+    createComment(userId, boardsId, content, onCreate){
         const data = {
             comments_writer: userId,
             comments_board: boardsId,
@@ -138,14 +138,14 @@ class CRUDService {
 
         this.axiosApi.post("/boards/create-comment/", data)
             .then(response => {
-                console.log(response);
+                onCreate(response.data.data);
             })
             .catch(error => {
                 console.log(error);
             })
     }
     // 댓글 삭제하기
-    deleteComment(userId, commentsId){
+    deleteComment(userId, commentsId, onDelete){
         const data = {
             user_id: userId
         };
@@ -154,7 +154,7 @@ class CRUDService {
         if(res){
             this.axiosApi.delete(`/boards/delete-comment/${commentsId}/`, {data})
                 .then(response => {
-                    console.log("삭제 완료");
+                    onDelete(commentsId);
                 })
                 .catch(error => {
                     console.log(error);
