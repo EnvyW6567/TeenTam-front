@@ -4,7 +4,7 @@ import Pagination from '../Pagination/Pagination';
 import PostCard from '../PostCard/PostCard';
 import styles from './PostList.module.css';
 
-const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPage, setOrder}) => {
+const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPage, setOrder, keyword}) => {
     const [orderName, setOrderName] = useState("최신순");
 
     const handleSelectOrder = (e) => {
@@ -60,6 +60,7 @@ const PostList = ({category, firstPage, postCount, postList, setFirstPage, setPa
                     postCount={postCount} 
                     setFirstPage={setFirstPage} 
                     setPage={setPage}
+                    keyword={keyword}
                 />
             </div>
         </section>

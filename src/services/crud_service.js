@@ -102,7 +102,6 @@ class CRUDService {
     getPostListBySearch(order, page, offset, keyword, setPostList, setPostCount){
         this.axiosApi.get(`/boards/search-boards/?page=${page}&offset=${offset}&order=${order}&keyword=${keyword}`)
             .then(response => {
-                console.log(response);
                 setPostList(response.data.data);
                 // 전체 게시글 개수 받아오기
                 setPostCount && setPostCount(response.data.boards_num);

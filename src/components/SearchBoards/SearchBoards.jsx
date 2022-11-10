@@ -26,6 +26,11 @@ const SearchBoards = (props) => {
     const [page, setPage] = useState(1);
 
     useEffect(() => {
+        setPage(1);
+        setFirstPage(1);
+    }, [keyword])
+
+    useEffect(() => {
         crudService.getPostListBySearch(ORDER, page, POSTS_PER_PAGE, keyword, setPostList, setPostCount);
     }, [crudService, page, keyword, setPostList, setPostCount])
 
@@ -38,6 +43,7 @@ const SearchBoards = (props) => {
                 postList={postList} 
                 setFirstPage={setFirstPage}
                 setPage={setPage}
+                keyword={keyword}
             />
         </section>
     )
