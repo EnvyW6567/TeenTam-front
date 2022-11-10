@@ -99,6 +99,18 @@ class CRUDService {
                 console.log(error);
             })
     }
+    getPostListBySearch(order, page, offset, keyword, setPostList, setPostCount){
+        this.axiosApi.get(`/boards/search-boards/?page=${page}&offset=${offset}&order=${order}&keyword=${keyword}`)
+            .then(response => {
+                console.log(response);
+                // setPostList(response.data.data);
+                // // 전체 게시글 개수 받아오기
+                // setPostCount && setPostCount(response.data.boards_num);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     // 게시글 좋아요
     updatePostLike(userId, boardsId, onLike){
         const res = window.confirm("이 글을 공감하시겠습니까?");
