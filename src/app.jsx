@@ -8,6 +8,7 @@ import EditPostPage from './pages/EditPostPage/EditPostPage';
 import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import './app.css';
+import SearchResultPage from './pages/SearchResultPage/SearchResultPage';
 
 export const CRUD = React.createContext(null);
 export const AUTH = React.createContext(null);
@@ -26,6 +27,7 @@ function App({authService, crudService}) {
             <Route path="/edit-post" element={<EditPostPage />}/>
             <Route path="/boards" element={<BoardsPage />}/>
             <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage />}/>
+            <Route path="/boards/search" element={<SearchResultPage />}/>
           </Routes>
         </CRUD.Provider>
       </AUTH.Provider>
