@@ -27,7 +27,7 @@ const MainPageProfile = ({ user }) => {
                                 <div className={styles.comment_info}>작성한 댓글<span className={styles.value}>-</span></div>
                             </div>
                         </div>
-                        <Link to='/login' className={`${styles.button} ${styles.profile_edit_button}`}>프로필 수정하기</Link>
+                        <Link to='/mypage' className={`${styles.button} ${styles.profile_edit_button}`}>프로필 수정하기</Link>
                     </>
                 ) : (
                     <>

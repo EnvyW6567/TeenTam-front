@@ -9,6 +9,7 @@ import PostDetailPage from './pages/PostDetailPage/PostDetailPage';
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import './app.css';
 import SearchResultPage from './pages/SearchResultPage/SearchResultPage';
+import MyPage from './pages/MyPage/MyPage';
 
 export const CRUD = React.createContext(null);
 export const AUTH = React.createContext(null);
@@ -28,6 +29,7 @@ function App({authService, crudService}) {
             <Route path="/boards" element={<BoardsPage />}/>
             <Route path="/boards/:boards_category/id/:boards_id" element={<PostDetailPage />}/>
             <Route path="/boards/search" element={<SearchResultPage />}/>
+            <Route path="/mypage" element={<MyPage />}/>
           </Routes>
         </CRUD.Provider>
       </AUTH.Provider>

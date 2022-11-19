@@ -1,6 +1,6 @@
 // 학교정보 가져오기
 export const getSchoolInfo = async () => {
-    const schoolName = "죽전고등학교";
+    const schoolName = "늘푸른고등학교";
     const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_SCHOOL_API_KEY}&Type=json&pIndex=1&pSize=100&SCHUL_NM=${schoolName}`;
     const res = await fetch(url);
     const resJson = await res.json();
