@@ -18,14 +18,6 @@
 
 .mapage_section{
     width: 100%;
-    height: 500px;
+    height: 700px;
     display: flex;
-}
-
-.mypage_centent{
-    width: 994px;
-    height: 500px;
-    margin-left: 34px;
-    border: 1px solid #DBDBDB;
-    border-radius: 8px;
 }

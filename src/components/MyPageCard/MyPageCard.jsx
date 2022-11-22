@@ -1,4 +1,6 @@
+import { tab } from '@testing-library/user-event/dist/tab';
 import React, { useState } from 'react';
+import MyPageContent from '../MyPageContent/MyPageContent';
 import MyPageTabBar from '../MyPageTabBar/MyPageTabBar';
 import styles from './MyPageCard.module.css';
 
@@ -10,11 +12,8 @@ const MyPageCard = (props) => {
             <h1 className={styles.mypage_card_title}>마이페이지</h1>
             <section className={styles.mapage_section}>
                 <MyPageTabBar setTabMenu={setTabMenu}/>
-                <div className={styles.mypage_centent}>
-                    {tabMenu}
-                </div>
+                <MyPageContent tabMenu={tabMenu}/>
             </section>
-
         </section>
     )
 }
