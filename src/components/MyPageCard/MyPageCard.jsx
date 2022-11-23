@@ -10,7 +10,7 @@ const MyPageCard = (props) => {
     return(
         <section className={styles.mypage_card}>
             <h1 className={styles.mypage_card_title}>마이페이지</h1>
-            <section className={styles.mapage_section}>
+            <section className={styles.mypage_section}>
                 <MyPageTabBar setTabMenu={setTabMenu}/>
                 <MyPageContent tabMenu={tabMenu}/>
             </section>

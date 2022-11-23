@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PasswordChangeForm from '../PasswordChangeForm/PasswordChangeForm';
 import ProfileSettingForm from '../ProfileSettingForm/ProfileSettingForm';
 import styles from './MyPageContent.module.css';
 
@@ -11,7 +12,7 @@ const MyPageContent = ({ tabMenu }) => {
                 tabMenu === "profile" ? (
                     <ProfileSettingForm user={user}/>
                 ) : (
-                    <>크아앙</>
+                    <PasswordChangeForm userId={user.id}/>
                 )
             }
         </section>
