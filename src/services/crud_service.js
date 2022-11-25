@@ -192,6 +192,19 @@ class CRUDService {
                 })
         }
     }
+
+    getMyPostsList(userId, page, setPostList, setPostCount) {
+        this.axiosApi.get(`/mypage/myboardslists/?user_id=${userId}&page=${page}`)
+            .then(response => {
+                setPostList(response.data.data);
+                // 전체 게시글 개수 받아오기
+                setPostCount && setPostCount(response.data.boards_num);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        
+    }
 }
 
 export default CRUDService;

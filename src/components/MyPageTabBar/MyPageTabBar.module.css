@@ -5,12 +5,13 @@
     padding: 0;
     list-style: none;
     font-size: 18px;
-    color: #666666;
 }
 
 .mypage_tab_menu{
     margin-bottom: 18px;
+    text-decoration: none;
     cursor: pointer;
+    color: #666666;
 }
 
 .current_tab{
