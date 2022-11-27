@@ -172,6 +172,39 @@ class CRUDService {
                 })
         }
     }
+
+    changePassword(userId, oldPassword, newPassword) {
+        const data = {
+            user_id: userId,
+            password: oldPassword,
+            new_password: newPassword
+        };
+
+        const res = window.confirm("정말 비밀번호를 변경하시겠습니까?");
+        if(res){
+            this.axiosApi.post("/mypage/change-password/", data)
+                .then(response => {
+                    alert("변경되었습니다");
+                    window.location.replace("/mypage");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+    }
+
+    getMyPostsList(userId, page, setPostList, setPostCount) {
+        this.axiosApi.get(`/mypage/myboardslists/?user_id=${userId}&page=${page}`)
+            .then(response => {
+                setPostList(response.data.data);
+                // 전체 게시글 개수 받아오기
+                setPostCount && setPostCount(response.data.boards_num);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        
+    }
 }
 
 export default CRUDService;

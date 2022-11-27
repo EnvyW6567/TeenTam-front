@@ -1,0 +1,20 @@
+.mypage_tab_bar{
+    width: 140px;
+    margin: 0;
+    margin-top: 18px;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+}
+
+.mypage_tab_menu{
+    margin-bottom: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #666666;
+}
+
+.current_tab{
+    font-weight: 700;
+    color: #AC0BF8;
+}

@@ -1,7 +1,7 @@
 // 학교정보 가져오기
-export const getSchoolInfo = async () => {
-    const schoolName = "죽전고등학교";
-    const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_SCHOOL_API_KEY}&Type=json&pIndex=1&pSize=100&SCHUL_NM=${schoolName}`;
+export const getSchoolInfo = async (schoolName) => {
+    const _schoolName = schoolName || "풍덕고등학교";
+    const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${process.env.REACT_APP_SCHOOL_API_KEY}&Type=json&pIndex=1&pSize=100&SCHUL_NM=${_schoolName}`;
     const res = await fetch(url);
     const resJson = await res.json();
     const { ATPT_OFCDC_SC_CODE, SD_SCHUL_CODE } = resJson.schoolInfo[1].row[0];

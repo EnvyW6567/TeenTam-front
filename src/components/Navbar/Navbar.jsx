@@ -51,7 +51,7 @@ const Navbar = (props) => {
                             </>
                         ) : (
                             <>
-                                <Link to='/write-post' className={`${styles.navbar_button} ${styles.go_to_mypage}`}>마이페이지</Link>
+                                <Link to='/mypage' className={`${styles.navbar_button} ${styles.go_to_mypage}`}>마이페이지</Link>
                                 <button 
                                     className={`${styles.navbar_button} ${styles.logout_button}`} 
                                     onClick={logout}>로그아웃</button>
