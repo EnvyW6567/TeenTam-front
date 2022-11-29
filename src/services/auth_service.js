@@ -44,14 +44,14 @@ class AuthService {
     
             this.axiosApi.post("/account/logout/", data)
             .then(response => {
-                    removeRefreshToken();
-                    // localStorage 정보 삭제
-                    localStorage.clear();
-                    onLogout();
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+                removeRefreshToken();
+                // localStorage 정보 삭제
+                localStorage.clear();
+                onLogout();
+            })
+            .catch(error => {
+                console.log(error);
+            })
         }
     }
 
