@@ -1,5 +1,6 @@
 # TeenTam - front
 2022 DKU 캡스톤디자인2 TeenTam front
+원본 레포지토리 바로가기(https://github.com/Cho-SangHyun/TeenTam-front)
 
 ## 설치방법  
 1. `Node.js` 설치(LTS버전으로) ([링크](https://nodejs.org/ko/))    
